@@ -9,9 +9,12 @@ import Footer from "@/components/footer"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Lớp Hóa Thầy Lâm Mạnh Cường - Quận 5 TPHCM",
-  description: "Website lớp luyện thi Hóa thầy Lâm Mạnh Cường tại Quận 5 TPHCM",
-    generator: 'v0.dev'
+  title: "Trung tâm Ánh Bình Minh",
+  description: "Trung tâm dạy học ngoài giờ - chuyên bồi dưỡng văn hoá cho học sinh phổ thông.",
+  icons: {
+    icon: "/images/logo.jpg",
+    apple: "/images/logo.jpg",
+  },
 }
 
 export default function RootLayout({
@@ -32,6 +35,3 @@ export default function RootLayout({
   )
 }
 
-
-
-import './globals.css'
