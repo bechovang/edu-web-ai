@@ -6,31 +6,32 @@ import { CalendarIcon } from "lucide-react"
 const posts = [
   {
     id: 1,
-    title: "Chương trình học Hóa 12 cơ bản và nâng cao",
-    excerpt: "Tổng hợp chương trình học Hóa 12 cơ bản và nâng cao cho năm học 2024-2025",
+    title: "Lộ trình học Toán 12 - Từ cơ bản đến nâng cao",
+    excerpt: "Chương trình học Toán 12 giúp học sinh nắm vững kiến thức và đạt điểm cao trong kỳ thi tốt nghiệp THPT.",
     date: "22/12/2024",
-    author: "LamManhCuong",
+    author: "ABMedu",
     image: "/placeholder.svg?height=200&width=400",
-    slug: "chuong-trinh-hoc-hoa-12",
+    slug: "lo-trinh-hoc-toan-12",
   },
   {
     id: 2,
-    title: "Chương trình học Hóa 11 cơ bản và nâng cao",
-    excerpt: "Tổng hợp chương trình học Hóa 11 cơ bản và nâng cao cho năm học 2024-2025",
+    title: "Khóa học Lý 11 - Rèn luyện tư duy và kỹ năng giải bài tập",
+    excerpt: "Tổng hợp các chuyên đề Vật Lý 11 quan trọng, giúp học sinh nâng cao tư duy và kỹ năng giải bài tập.",
     date: "21/12/2024",
-    author: "LamManhCuong",
+    author: "ABMedu",
     image: "/placeholder.svg?height=200&width=400",
-    slug: "chuong-trinh-hoc-hoa-11",
+    slug: "khoa-hoc-ly-11",
   },
   {
     id: 3,
-    title: "Chương trình học Hóa 10 cơ bản và nâng cao",
-    excerpt: "Tổng hợp chương trình học Hóa 10 cơ bản và nâng cao cho năm học 2024-2025",
+    title: "Chinh phục Hóa 10 - Nền tảng vững chắc cho các lớp trên",
+    excerpt: "Khóa học Hóa 10 giúp học sinh hiểu sâu kiến thức nền tảng, chuẩn bị cho chương trình Hóa nâng cao.",
     date: "20/12/2024",
-    author: "LamManhCuong",
+    author: "ABMedu",
     image: "/placeholder.svg?height=200&width=400",
-    slug: "chuong-trinh-hoc-hoa-10",
+    slug: "chinh-phuc-hoa-10",
   },
+  
 ]
 
 export default function RecentPosts() {

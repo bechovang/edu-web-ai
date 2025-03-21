@@ -67,7 +67,7 @@ export default function RegisterPage() {
             </Table>
           </div>
             <div className="mt-3 text-center text-sm">
-              <p>Có video bài giảng giúp học sinh vào sau học lại bài cũ để theo kịp lớp</p>
+              <p>trung tâm dạy học ngoài giờ - chuyên bồi dưỡng văn hoá cho học sinh phổ thông.</p>
               <p>
                 Liên hệ qua Zalo: <span className="font-medium">0912345678</span> • Đăng ký học tại:{" "}
                 <span className="font-medium">www.TrungTamAnhBinhMinh.vn</span>
@@ -195,7 +195,7 @@ export default function RegisterPage() {
           <div className="space-y-3">
             <div className="flex items-start gap-2">
               <MapPin className="h-5 w-5 text-blue-600 mt-1 flex-shrink-0" />
-              <p>Địa chỉ lớp: Số 355, đường An Dương Vương, Phường 3, Quận 5, TPHCM (gần trường Đại học Sư phạm)</p>
+              <p>Địa chỉ lớp: số 101 Làng Tăng Phú, P Tăng Nhơn Phú A, TP Thủ Đức, TP Hồ Chí Minh</p>
             </div>
             <div className="flex items-start gap-2">
               <CreditCard className="h-5 w-5 text-blue-600 mt-1 flex-shrink-0" />
@@ -209,13 +209,13 @@ export default function RegisterPage() {
                 <p className="font-medium">Techcombank (Ngân hàng TMCP Kỹ Thương Việt Nam):</p>
                 <ul className="mt-2 space-y-1">
                   <li>
-                    <span className="font-medium">Chủ tài khoản:</span> Lương Mạnh Cầm
+                    <span className="font-medium">Chủ tài khoản:</span> Nguyễn Văn A
                   </li>
                   <li>
-                    <span className="font-medium">Số tài khoản:</span> 3825101998
+                    <span className="font-medium">Số tài khoản:</span> 123456789
                   </li>
                   <li>
-                    <span className="font-medium">Chi nhánh:</span> Quận 5, TPHCM
+                    <span className="font-medium">Chi nhánh:</span> không biết
                   </li>
                 </ul>
                 <p className="mt-3 text-sm text-gray-600">

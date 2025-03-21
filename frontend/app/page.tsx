@@ -42,7 +42,7 @@ export default function HomePage() {
             <div className="md:w-1/2 flex justify-center">
               <div className="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
                 <h3 className="text-xl font-medium mb-3 text-center text-white">Kỳ thi Tốt nghiệp THPT năm 2025 còn</h3>
-                <CountdownTimer targetDate="2025-06-01T00:00:00" />
+                <CountdownTimer targetDate="2025-06-26T00:00:00" />
               </div>
             </div>
           </div>
@@ -113,7 +113,7 @@ export default function HomePage() {
 
 
           <div className="mt-6 text-center">
-            <p className="mb-3">Có video bài giảng giúp học sinh vào sau học lại bài cũ để theo kịp lớp</p>
+            <p className="mb-3">trung tâm dạy học ngoài giờ - chuyên bồi dưỡng văn hoá cho học sinh phổ thông.</p>
             <p className="mb-6">Liên hệ qua Zalo: 0912345678 - Đăng ký học tại: www.TrungTamAnhBinhMinh.vn</p>
             <Link href="/register">
               <Button size="lg" className="bg-amber-500 hover:bg-amber-600 text-white font-bold">
@@ -128,7 +128,7 @@ export default function HomePage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-8">
-            DANH SÁCH HỌC SINH ĐIỂM CAO LỚP HÓA THẦY LÂM MẠNH CƯỜNG - KHÓA THI TỐT NGHIỆP THPT NĂM 2024
+            DANH SÁCH HỌC SINH ĐIỂM CAO TẠI TRUNG TÂM - KHÓA THI TỐT NGHIỆP THPT NĂM 2024
           </h2>
           <HighScoreStudents />
         </div>
@@ -152,7 +152,7 @@ export default function HomePage() {
 
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8">Một số hình ảnh về thầy</h2>
+          <h2 className="text-3xl font-bold text-center mb-8">Trung tâm tự hào có đội ngũ giáo viên xuất sắc</h2>
           <TeacherGallery />
         </div>
       </section>

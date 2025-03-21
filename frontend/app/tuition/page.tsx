@@ -8,11 +8,11 @@ import { MapPin, Clock, BookOpen, CreditCard, Video } from "lucide-react"
 export default function TuitionPage() {
   return (
     <main className="container mx-auto px-4 py-12">
-      <h1 className="text-3xl font-bold text-center mb-8">Học phí lớp Hóa Lâm Mạnh Cường</h1>
+      <h1 className="text-3xl font-bold text-center mb-8">Học phí Trung tâm Ánh Bình Minh</h1>
 
       <Tabs defaultValue="offline" className="w-full">
         <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-4 mb-8">
-          <TabsTrigger value="offline">Offline Quận 5</TabsTrigger>
+          <TabsTrigger value="offline">Offline tại lớp</TabsTrigger>
           <TabsTrigger value="online">Online</TabsTrigger>
           <TabsTrigger value="group">Nhóm nhỏ</TabsTrigger>
           <TabsTrigger value="private">1:1 Online</TabsTrigger>
@@ -21,15 +21,15 @@ export default function TuitionPage() {
         <TabsContent value="offline">
           <Card>
             <CardHeader className="text-center">
-              <CardTitle className="text-2xl">1. Học offline tại Quận 5 TPHCM</CardTitle>
-              <CardDescription>Lớp luyện thi Hóa Quận 5 Thầy Lâm Mạnh Cường khóa 2025</CardDescription>
+              <CardTitle className="text-2xl">1. Học offline tại lớp</CardTitle>
+              <CardDescription>Học trực tiếp cùng giáo viên tại trung tâm</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div className="relative h-64 rounded-lg overflow-hidden">
                   <Image
                     src="/placeholder.svg?height=400&width=600"
-                    alt="Lớp học offline tại Quận 5"
+                    alt="Lớp học offline tại lớp"
                     fill
                     className="object-cover"
                   />
@@ -46,21 +46,21 @@ export default function TuitionPage() {
                     <MapPin className="h-5 w-5 text-blue-600 mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="font-medium">Địa chỉ lớp:</h3>
-                      <p>Số 355, đường An Dương Vương, Phường 3, Quận 5, TPHCM (gần trường Đại học Sư phạm)</p>
+                      <p>số 101 Làng Tăng Phú, P Tăng Nhơn Phú A, TP Thủ Đức, TP Hồ Chí Minh</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <Clock className="h-5 w-5 text-blue-600 mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="font-medium">Thời gian học:</h3>
-                      <p>Mỗi tuần học 1 buổi, mỗi buổi học 3 tiếng</p>
+                      <p>Mỗi tuần học 1 buổi, mỗi buổi học 3 tiếng ?? </p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <BookOpen className="h-5 w-5 text-blue-600 mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="font-medium">Nội dung học:</h3>
-                      <p>Hóa 10-11-12, Luyện thi tốt nghiệp THPT, Luyện thi ĐGNL-HCM</p>
+                      <p>các môn học lớp 10-11-12, Luyện thi tốt nghiệp THPT, Luyện thi ĐGNL-HCM</p>
                     </div>
                   </div>
                   <Button className="w-full" asChild>
@@ -76,14 +76,14 @@ export default function TuitionPage() {
           <Card>
             <CardHeader className="text-center">
               <CardTitle className="text-2xl">2. Học online tại website tuhochoa.vn</CardTitle>
-              <CardDescription>Học Hóa online thầy Lâm Mạnh Cường tại tuhochoa.vn</CardDescription>
+              <CardDescription>Học online cùng thầy cô qua Google meet</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div className="relative h-64 rounded-lg overflow-hidden">
                   <Image
                     src="/placeholder.svg?height=400&width=600"
-                    alt="Học online tại tuhochoa.vn"
+                    alt="Học online"
                     fill
                     className="object-cover"
                   />
@@ -99,8 +99,8 @@ export default function TuitionPage() {
                   <div className="flex items-start gap-3">
                     <Video className="h-5 w-5 text-blue-600 mt-1 flex-shrink-0" />
                     <div>
-                      <h3 className="font-medium">Website:</h3>
-                      <p>Tự Học Hóa - www.tuhochoa.vn</p>
+                      <h3 className="font-medium">nền tảng học online:</h3>
+                      <p>Google meet</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
@@ -115,8 +115,7 @@ export default function TuitionPage() {
                     <div>
                       <h3 className="font-medium">Nội dung học:</h3>
                       <p>
-                        Hóa 10-11-12, Luyện thi tốt nghiệp THPT, Luyện thi ĐGNL-HCM, Luyện thi HSG, Hóa đại cương ĐH,
-                        Hóa hữu cơ ĐH
+                       các môn học lớp 10-11-12, Luyện thi tốt nghiệp THPT, Luyện thi ĐGNL-HCM
                       </p>
                     </div>
                   </div>
@@ -134,8 +133,8 @@ export default function TuitionPage() {
         <TabsContent value="group">
           <Card>
             <CardHeader className="text-center">
-              <CardTitle className="text-2xl">3. Học kèm 1:1 hoặc nhóm nhỏ tại Quận 5 TPHCM</CardTitle>
-              <CardDescription>Học kèm Hóa thầy Lâm Mạnh Cường tại Quận 5 TPHCM</CardDescription>
+              <CardTitle className="text-2xl">3. Học kèm 1:1 hoặc nhóm nhỏ tại lớp</CardTitle>
+              <CardDescription>Học kèm trực tiếp tại lớp</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -164,14 +163,14 @@ export default function TuitionPage() {
                     <MapPin className="h-5 w-5 text-blue-600 mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="font-medium">Địa chỉ lớp:</h3>
-                      <p>Số 355, đường An Dương Vương, Phường 3, Quận 5, TPHCM (gần trường Đại học Sư phạm)</p>
+                      <p>số 101 Làng Tăng Phú, P Tăng Nhơn Phú A, TP Thủ Đức, TP Hồ Chí Minh</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <Clock className="h-5 w-5 text-blue-600 mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="font-medium">Thời gian học:</h3>
-                      <p>Sắp xếp qua Zalo 0936.975.145</p>
+                      <p>Sắp xếp qua Zalo 097 151 54 51</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
@@ -179,8 +178,7 @@ export default function TuitionPage() {
                     <div>
                       <h3 className="font-medium">Nội dung học:</h3>
                       <p>
-                        Luyện thi vào lớp 10 chuyên Hóa, Hóa 10-11-12, Luyện thi tốt nghiệp THPT, Luyện thi ĐGNL-HCM,
-                        Luyện thi HSG, Hóa đại cương ĐH, Hóa hữu cơ ĐH
+                      các môn học lớp 10-11-12, Luyện thi tốt nghiệp THPT, Luyện thi ĐGNL-HCM
                       </p>
                     </div>
                   </div>
@@ -197,7 +195,7 @@ export default function TuitionPage() {
           <Card>
             <CardHeader className="text-center">
               <CardTitle className="text-2xl">4. Học kèm 1:1 online</CardTitle>
-              <CardDescription>Học kèm online Hóa thầy Lâm Mạnh Cường qua Google Meet</CardDescription>
+              <CardDescription>Học kèm online cùng thầy cô qua Google Meet</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -221,14 +219,14 @@ export default function TuitionPage() {
                     <Video className="h-5 w-5 text-blue-600 mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="font-medium">Phương thức học:</h3>
-                      <p>Học qua ứng dụng Zoom Online hoặc Google Meet</p>
+                      <p>Học qua ứng dụng Google Meet</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <Clock className="h-5 w-5 text-blue-600 mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="font-medium">Thời gian học:</h3>
-                      <p>Sắp xếp qua Zalo 0936.975.145</p>
+                      <p>Sắp xếp qua Zalo 0971515451</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
@@ -236,8 +234,7 @@ export default function TuitionPage() {
                     <div>
                       <h3 className="font-medium">Nội dung học:</h3>
                       <p>
-                        Luyện thi vào lớp 10 chuyên Hóa, Hóa 10-11-12, Luyện thi tốt nghiệp THPT, Luyện thi ĐGNL-HCM,
-                        Luyện thi HSG, Hóa đại cương ĐH, Hóa hữu cơ ĐH
+                        các môn học lớp 10-11-12, Luyện thi tốt nghiệp THPT, Luyện thi ĐGNL-HCM
                       </p>
                     </div>
                   </div>
@@ -259,13 +256,13 @@ export default function TuitionPage() {
           <p className="font-medium">Techcombank (Ngân hàng TMCP Kỹ Thương Việt Nam):</p>
           <ul className="mt-2 space-y-1">
             <li>
-              <span className="font-medium">Chủ tài khoản:</span> Lương Mạnh Cầm
+              <span className="font-medium">Chủ tài khoản:</span> Nguyễn Văn A
             </li>
             <li>
-              <span className="font-medium">Số tài khoản:</span> 3825101998
+              <span className="font-medium">Số tài khoản:</span> 123456789
             </li>
             <li>
-              <span className="font-medium">Chi nhánh:</span> Quận 5, TPHCM
+              <span className="font-medium">Chi nhánh:</span> không biết
             </li>
           </ul>
           <p className="mt-3 text-sm text-gray-600">

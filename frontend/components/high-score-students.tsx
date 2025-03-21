@@ -4,8 +4,9 @@ import { useState } from "react"
 import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Dialog, DialogContent } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 const students = [
   {
@@ -159,6 +160,9 @@ export default function HighScoreStudents() {
 
       <Dialog open={!!selectedStudent} onOpenChange={(open) => !open && setSelectedStudent(null)}>
         <DialogContent className="max-w-3xl">
+        <VisuallyHidden>
+          <DialogTitle>Hidden Title</DialogTitle>
+        </VisuallyHidden>
           {selectedStudent && (
             <div className="flex flex-col items-center">
               <div className="flex flex-col sm:flex-row items-center gap-6 mb-6">

@@ -50,75 +50,7 @@ export default function HomePage() {
       </div>
     </section>
 
-    {/* Class Schedule Section */}
-    <section className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-8">
-          LỊCH HỌC CÁC LỚP TẠI TRUNG TÂM - NĂM HỌC 2024-2025
-        </h2>
-        <p className="text-center mb-6">Địa chỉ: số 101 Làng Tăng Phú, P Tăng Nhơn Phú A, TP Thủ Đức, TP Hồ Chí Minh</p>
 
-        <div className="overflow-x-auto rounded-lg shadow-lg">
-          <Table className="w-full text-center border-collapse">
-            <TableHeader>
-              <TableRow className="border-2 border-blue-300">
-                <TableHead className="bg-blue-700 text-white border-2 border-blue-300 text-center">
-                  Lớp (khóa)
-                </TableHead>
-                <TableHead className="bg-blue-700 text-white border-2 border-blue-300 text-center">
-                  T2
-                </TableHead>
-                <TableHead className="bg-blue-700 text-white border-2 border-blue-300 text-center">
-                  T3
-                </TableHead>
-                <TableHead className="bg-blue-700 text-white border-2 border-blue-300 text-center">
-                  T4
-                </TableHead>
-                <TableHead className="bg-blue-700 text-white border-2 border-blue-300 text-center">
-                  T5
-                </TableHead>
-                <TableHead className="bg-blue-700 text-white border-2 border-blue-300 text-center">
-                  T6
-                </TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {[
-                { name: "10A (2009)", slots: ["", "", "18:00-21:00", "", ""] },
-                { name: "11A (2008)", slots: ["", "", "", "18:00-21:00", ""] },
-                { name: "11B (2008)", slots: ["", "", "", "", "18:00-21:00"] },
-                { name: "12A (2007)", slots: ["18:00-21:00", "", "", "", ""] },
-                { name: "12B (2007)", slots: ["", "18:00-21:00", "", "", ""] },
-                { name: "12C (2007)", slots: ["", "", "", "", "13:30-16:30"] },
-                { name: "12D (2007)", slots: ["", "", "", "", "13:30-16:30"] },
-              ].map((row, index) => (
-                <TableRow
-                  key={index}
-                  className={`border-2 border-blue-300 ${index % 2 === 0 ? "bg-white" : "bg-[#DCEEFF]"}`}
-                >
-                  <TableCell className="font-medium border-2 border-blue-300 text-center">
-                    {row.name}
-                  </TableCell>
-                  {row.slots.map((slot, i) => (
-                    <TableCell key={i} className="border-2 border-blue-300 text-center">
-                      {slot}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </div>
-
-          <div className="mt-6 text-center">
-            <p className="mb-3">Có video bài giảng giúp học sinh vào sau học lại bài cũ để theo kịp lớp</p>
-            <p className="mb-6">Liên hệ qua Zalo: 0912345678 - Đăng ký học tại: www.TrungTamAnhBinhMinh.vn</p>
-            <Button size="lg" className="bg-amber-500 hover:bg-amber-600 text-white font-bold" asChild>
-              <Link href="/register">Đăng ký học</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
 
       {/* High Score Students Section */}
       <section className="py-16">
