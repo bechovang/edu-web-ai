@@ -13,7 +13,7 @@ public class EmailService {
 
     public void sendRegistrationEmail(Registration registration) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo("admin@example.com");
+        message.setTo("phuchcm2006@gmail.com");
         message.setSubject("📌 Thông báo: Đơn đăng ký mới từ " + registration.getFullName());
 
         String emailContent = String.format(
