@@ -5,9 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class EduwebApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(EduwebApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(EduwebApplication.class, args);
+        System.out.println("Backend da chay!");
+    }
 }
+
