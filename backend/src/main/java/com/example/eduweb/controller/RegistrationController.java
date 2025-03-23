@@ -23,19 +23,20 @@ public class RegistrationController {
 
     // Mã màu ANSI
     private static final String GREEN = "\u001B[32m";
-    private static final String CYAN = "\u001B[36m";
     private static final String RESET = "\u001B[0m";
 
     @PostMapping
     public ResponseEntity<String> registerStudent(@RequestBody Registration registration) {
-        System.out.println(CYAN + "==============================" + RESET);
-        System.out.println(GREEN + "API đã nhận request: " + registration + RESET);
-        System.out.println(CYAN + "==============================\n" + RESET);
+
+        System.out.println(GREEN + "\n============================");
+        System.out.println("API da nhan request: " + registration);
+        System.out.println("============================\n"  + RESET);
+
 
         Registration savedRegistration = repository.save(registration);
         emailService.sendRegistrationEmail(savedRegistration);
 
-        logger.info("Đăng ký thành công: {}", savedRegistration);
+        logger.info("Dang ky thanh cong: {}", savedRegistration);
 
         return ResponseEntity.ok("Đăng ký thành công!");
     }

@@ -13,7 +13,7 @@ public class EduwebApplication {
         String reset = "\u001B[0m"; // Reset màu về mặc định
 
         System.out.println(green + "\n============================");
-        System.out.println("X  Backend đã chạy! X ");
+        System.out.println("X  Backend da chay! X ");
         System.out.println("============================\n"  + reset);
     }
 }
