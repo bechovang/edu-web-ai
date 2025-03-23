@@ -7,7 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class EduwebApplication {
     public static void main(String[] args) {
         SpringApplication.run(EduwebApplication.class, args);
-        System.out.println("Backend da chay!");
+        System.out.println("\n============================");
+        System.out.println("X  Backend da chay! X ");
+        System.out.println("============================\n");
     }
 }
 
