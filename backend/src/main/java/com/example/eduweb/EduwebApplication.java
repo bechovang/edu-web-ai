@@ -7,9 +7,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class EduwebApplication {
     public static void main(String[] args) {
         SpringApplication.run(EduwebApplication.class, args);
-        System.out.println("\n============================");
-        System.out.println("X  Backend da chay! X ");
-        System.out.println("============================\n");
+        
+        // ANSI màu xanh (màu xanh lá: \u001B[32m)
+        String green = "\u001B[32m";
+        String reset = "\u001B[0m"; // Reset màu về mặc định
+
+        System.out.println(green + "\n============================");
+        System.out.println("X  Backend đã chạy! X ");
+        System.out.println("============================\n"  + reset);
     }
 }
 

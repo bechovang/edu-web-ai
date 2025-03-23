@@ -21,13 +21,22 @@ public class RegistrationController {
     @Autowired
     private EmailService emailService;
 
+    // Mã màu ANSI
+    private static final String GREEN = "\u001B[32m";
+    private static final String CYAN = "\u001B[36m";
+    private static final String RESET = "\u001B[0m";
+
     @PostMapping
     public ResponseEntity<String> registerStudent(@RequestBody Registration registration) {
-        System.out.println("API đã nhận request: " + registration);
+        System.out.println(CYAN + "==============================" + RESET);
+        System.out.println(GREEN + "API đã nhận request: " + registration + RESET);
+        System.out.println(CYAN + "==============================\n" + RESET);
+
         Registration savedRegistration = repository.save(registration);
         emailService.sendRegistrationEmail(savedRegistration);
 
         logger.info("Đăng ký thành công: {}", savedRegistration);
+
         return ResponseEntity.ok("Đăng ký thành công!");
     }
 }
