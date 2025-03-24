@@ -1,4 +1,4 @@
-package com.example.eduweb.config; // Đảm bảo package khớp với đường dẫn thư mục
+package com.example.eduweb.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +17,10 @@ public class CorsConfig {
         config.setAllowCredentials(true);
         config.setAllowedOrigins(List.of(
             "http://localhost:3000",
-            "https://blog-website-frontend-shku.onrender.com"
+            "https://trungtamanhbinhminh-h15bhj8h1-bechovangs-projects.vercel.app",
+            "https://edu-web-frontend.vercel.app",
+            "https://trungtamanhbinhminh-bechovang-bechovangs-projects.vercel.app",
+            "https://trungtamanhbinhminh-bechovangs-projects.vercel.app"
         ));
         config.setAllowedHeaders(List.of(
             "Origin", "Content-Type", "Accept",
