@@ -2,6 +2,8 @@ package com.example.eduweb.service;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
@@ -24,43 +26,51 @@ public class EmailService {
     @Autowired
     private ExcelService excelService;
 
+    // Danh sách email admin
+    private static final List<String> ADMIN_EMAILS = Arrays.asList(
+        "phuchcm2006@gmail.com",
+        "mcphuchcm2006@gmail.com" // Thay bằng email thứ hai của admin
+    );
+
     public void sendRegistrationEmail(Registration registration) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo("phuchcm2006@gmail.com");
+        // Gửi đến tất cả email trong danh sách ADMIN_EMAILS
+        message.setTo(ADMIN_EMAILS.toArray(new String[0]));
         message.setSubject("📌 Thông báo: Đơn đăng ký mới từ " + registration.getFullName());
 
         String emailContent = String.format(
             "📢 Một đơn đăng ký mới đã được gửi:\n\n" +
             "🔹 Họ và tên: %s\n" +
-            "🔹 Facebook: %s\n" +
-            "🔹 Trường: %s\n" +
             "🔹 SĐT học viên: %s\n" +
             "🔹 SĐT phụ huynh: %s\n" +
-            "🔹 Lớp đăng ký: %s\n" +
+            "🔹 Facebook: %s\n" +
+            "🔹 Trường: %s\n" +
+            "🔹 Môn học: %s\n" +
+            "🔹 Khối lớp: %s\n" +
             "🔹 Ghi chú: %s\n\n" +
             "⏳ Ngày gửi: %s\n\n" +
             "📩 Vui lòng kiểm tra hệ thống để xử lý đơn đăng ký.",
             registration.getFullName(),
-            registration.getFacebookLink(),
-            registration.getSchool(),
             registration.getStudentPhone(),
-            registration.getParentPhone(),
-            registration.getRegisteredClasses(),
+            registration.getParentPhone() != null ? registration.getParentPhone() : "Không có",
+            registration.getFacebookLink() != null ? registration.getFacebookLink() : "Không có",
+            registration.getSchool(),
+            getSubjectName(registration.getSubject()),
+            registration.getGrade(),
             registration.getNote() != null ? registration.getNote() : "Không có",
-            registration.getCreatedAt()
+            new SimpleDateFormat("dd/MM/yyyy HH:mm").format(registration.getCreatedAt())
         );
 
         message.setText(emailContent);
         mailSender.send(message);
     }
 
-
-
     public void sendExcelEmail(List<Registration> registrations) throws MessagingException, IOException {
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
     
-        helper.setTo("phuchcm2006@gmail.com");
+        // Gửi đến tất cả email trong danh sách ADMIN_EMAILS
+        helper.setTo(ADMIN_EMAILS.toArray(new String[0]));
         helper.setSubject("📌 File Excel Tổng hợp đơn đăng ký học");
     
         String emailContent = "📢 Danh sách đơn đăng ký học được đính kèm trong file Excel.\n\n" +
@@ -68,7 +78,6 @@ public class EmailService {
     
         helper.setText(emailContent, true);
     
-        // Tạo file Excel
         ByteArrayInputStream excelStream = excelService.exportRegistrationsToExcel(registrations);
         InputStreamSource attachment = new ByteArrayResource(excelStream.readAllBytes());
     
@@ -76,5 +85,14 @@ public class EmailService {
     
         mailSender.send(message);
     }
-    
+
+    private String getSubjectName(String subjectCode) {
+        return switch (subjectCode) {
+            case "chemistry" -> "Hóa học";
+            case "math" -> "Toán học";
+            case "physics" -> "Vật lý";
+            case "biology" -> "Sinh học";
+            default -> subjectCode;
+        };
+    }
 }
