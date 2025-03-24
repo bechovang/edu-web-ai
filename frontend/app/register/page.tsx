@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState, type FormEvent } from "react"
 import { Button } from "@/components/ui/button"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
@@ -13,6 +12,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { MapPin, CreditCard } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import { useNotification } from "@/components/custom-notification"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 export default function RegisterPage() {
   const { showNotification } = useNotification()
@@ -21,6 +21,8 @@ export default function RegisterPage() {
     fullName: "",
     facebook: "",
     school: "",
+    subject: "chemistry", // Mặc định là Hóa học
+    grade: "12", // Mặc định là lớp 12
     phone: "",
     parentPhone: "",
     classes: {
@@ -53,6 +55,13 @@ export default function RegisterPage() {
     }))
   }
 
+  const handleSelectChange = (field: string, value: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      [field]: value,
+    }))
+  }
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
@@ -60,39 +69,16 @@ export default function RegisterPage() {
     try {
       // Kiểm tra trường hợp đặc biệt để export Excel
       if (formData.fullName === "excel" && formData.facebook === "excel" && formData.school === "excel") {
-        // Giả lập gọi API export Excel
         await new Promise((resolve) => setTimeout(resolve, 1000))
-
         showNotification("success", "📊 Đã gọi API Export Excel", "Dữ liệu đã được xuất ra file Excel thành công")
       } else {
-        // Giả lập gửi form đăng ký
         await new Promise((resolve) => setTimeout(resolve, 1000))
-
         showNotification(
           "success",
           "✅ Đăng ký thành công!",
-          "Thông tin đăng ký của bạn đã được gửi. Chúng tôi sẽ liên hệ lại trong thời gian sớm nhất.",
+          `Thông tin đăng ký môn ${formData.subject} khối ${formData.grade} của bạn đã được gửi. Chúng tôi sẽ liên hệ lại trong thời gian sớm nhất.`,
         )
       }
-
-      // Reset form sau khi đăng ký thành công (tùy chọn)
-      // setFormData({
-      //   fullName: "",
-      //   facebook: "",
-      //   school: "",
-      //   phone: "",
-      //   parentPhone: "",
-      //   classes: {
-      //     class12A: false,
-      //     class12B: false,
-      //     class12C: false,
-      //     class12D: false,
-      //     class11A: false,
-      //     class11B: false,
-      //     class10A: false,
-      //   },
-      //   note: "",
-      // })
     } catch (error) {
       showNotification(
         "error",
@@ -163,7 +149,7 @@ export default function RegisterPage() {
               </Table>
             </div>
             <div className="mt-3 text-center text-sm">
-              <p>trung tâm dạy học ngoài giờ - chuyên bồi dưỡng văn hoá cho học sinh phổ thông.</p>
+              <p>Trung tâm dạy học ngoài giờ - chuyên bồi dưỡng văn hoá cho học sinh phổ thông.</p>
               <p>
                 Liên hệ qua Zalo: <span className="font-medium">0912345678</span> • Đăng ký học tại:{" "}
                 <span className="font-medium">www.TrungTamAnhBinhMinh.vn</span>
@@ -175,7 +161,7 @@ export default function RegisterPage() {
         <Card>
           <CardHeader>
             <CardTitle>Thông tin đăng ký</CardTitle>
-            <CardDescription>Vui lòng điền đầy đủ thông tin để đăng ký lớp học Hóa thầy Lâm Mạnh Cường</CardDescription>
+            <CardDescription>Vui lòng điền đầy đủ thông tin để đăng ký lớp học</CardDescription>
           </CardHeader>
           <CardContent>
             <form className="space-y-6" onSubmit={handleSubmit}>
@@ -216,6 +202,49 @@ export default function RegisterPage() {
                   value={formData.school}
                   onChange={handleInputChange}
                 />
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="subject">
+                    Môn học <span className="text-red-500">*</span>
+                  </Label>
+                  <Select
+                    value={formData.subject}
+                    onValueChange={(value) => handleSelectChange("subject", value)}
+                    required
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Chọn môn học" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="chemistry">Hóa học</SelectItem>
+                      <SelectItem value="math">Toán học</SelectItem>
+                      <SelectItem value="physics">Vật lý</SelectItem>
+                      <SelectItem value="biology">Sinh học</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="grade">
+                    Khối lớp <span className="text-red-500">*</span>
+                  </Label>
+                  <Select
+                    value={formData.grade}
+                    onValueChange={(value) => handleSelectChange("grade", value)}
+                    required
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Chọn khối lớp" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="10">Lớp 10</SelectItem>
+                      <SelectItem value="11">Lớp 11</SelectItem>
+                      <SelectItem value="12">Lớp 12</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
               </div>
 
               <div className="space-y-2">
@@ -376,7 +405,7 @@ export default function RegisterPage() {
                     <span className="font-medium">Số tài khoản:</span> 123456789
                   </li>
                   <li>
-                    <span className="font-medium">Chi nhánh:</span> không biết
+                    <span className="font-medium">Chi nhánh:</span> TP Hồ Chí Minh
                   </li>
                 </ul>
                 <p className="mt-3 text-sm text-gray-600">
