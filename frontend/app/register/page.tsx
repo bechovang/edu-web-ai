@@ -11,7 +11,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { MapPin, CreditCard } from "lucide-react"
 import { useNotification } from "@/components/custom-notification"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import axios from 'axios'
+import api from "@/lib/api" // Sử dụng API service đã cấu hình
 
 export default function RegisterPage() {
   const { showNotification } = useNotification()
@@ -22,8 +22,8 @@ export default function RegisterPage() {
     parentPhone: "",
     facebook: "",
     school: "",
-    subject: "Hóa", // Mặc định là Hóa học
-    grade: "12", // Mặc định là lớp 12
+    subject: "Hóa",
+    grade: "12",
     note: "",
   })
 
@@ -43,8 +43,8 @@ export default function RegisterPage() {
   }
 
   const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
   
     try {
       const isExportRequest = 
@@ -53,10 +53,10 @@ export default function RegisterPage() {
         formData.facebook.toLowerCase() === "excel";
   
       if (isExportRequest) {
-        await axios.get('http://localhost:8080/api/registrations/export-excel');
-        showNotification("success", "📊 Gọi API Export Excel", "Đã gửi yêu cầu export Excel thành công");
+        await api.get('api/registrations/export-excel');
+        showNotification("success", "📊 Export Excel", "Yêu cầu export đã được gửi thành công");
       } else {
-        await axios.post('http://localhost:8080/api/registrations', {
+        await api.post('api/registrations', {
           fullName: formData.fullName,
           studentPhone: formData.phone,
           parentPhone: formData.parentPhone,
@@ -67,12 +67,8 @@ export default function RegisterPage() {
           note: formData.note
         });
   
-        showNotification(
-          "success",
-          "✅ Đăng ký thành công!",
-          `Thông tin đăng ký môn ${formData.subject} khối ${formData.grade} của bạn đã được gửi. Chúng tôi sẽ liên hệ lại trong thời gian sớm nhất.`
-        );
-  
+        showNotification("success", "✅ Thành công", "Đăng ký thành công");
+        // Reset form...
         setFormData({
           fullName: "",
           phone: "",
@@ -82,23 +78,22 @@ export default function RegisterPage() {
           subject: "Hóa",
           grade: "12",
           note: "",
-        });
+        })
       }
     } catch (error: unknown) {
-      console.error('Lỗi:', error);
       const errorMessage = error instanceof Error 
         ? error.message 
-        : "Đã xảy ra lỗi khi gửi thông tin đăng ký. Vui lòng thử lại sau.";
+        : "Lỗi không xác định khi gửi dữ liệu";
       
       showNotification(
         "error",
-        "❌ Đăng ký không thành công",
-        errorMessage
+        "❌ Lỗi kết nối",
+        `Không thể kết nối tới server: ${errorMessage}`
       );
     } finally {
       setIsSubmitting(false);
     }
-  }
+  };
 
   return (
     <main className="container mx-auto px-4 py-12">
