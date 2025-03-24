@@ -5,38 +5,40 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
-import java.util.List;
+import java.util.Arrays;
+
 
 @Configuration
 public class CorsConfig {
 
     @Bean
     public CorsFilter corsFilter() {
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        System.out.println("Initializing CORS Filter...");
+        
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.setAllowedOrigins(List.of(
-            "http://localhost:3000",
-            "https://trungtamanhbinhminh-h15bhj8h1-bechovangs-projects.vercel.app",
-            "https://edu-web-frontend.vercel.app",
-            "https://trungtamanhbinhminh-bechovang-bechovangs-projects.vercel.app",
-            "https://trungtamanhbinhminh-bechovangs-projects.vercel.app"
+        
+        // Sử dụng allowedOriginPatterns thay vì allowedOrigins để linh hoạt hơn
+        config.setAllowedOriginPatterns(Arrays.asList(
+            "http://localhost:[*]",
+            "https://*.vercel.app",
+            "https://*.onrender.com",
+            "https://*.render.com"
         ));
-        config.setAllowedHeaders(List.of(
-            "Origin", "Content-Type", "Accept",
-            "Authorization", "X-Requested-With",
-            "Access-Control-Request-Method",
-            "Access-Control-Request-Headers"
-        ));
-        config.setExposedHeaders(List.of(
+        
+        config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH", "HEAD"));
+        config.setAllowedHeaders(Arrays.asList("*"));
+        config.setExposedHeaders(Arrays.asList(
+            "Authorization", 
             "Content-Disposition",
-            "Authorization"
+            "Access-Control-Allow-Origin",
+            "Access-Control-Allow-Credentials"
         ));
-        config.setAllowedMethods(List.of(
-            "GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"
-        ));
-        config.setMaxAge(3600L); // Cache preflight request 1 giờ
+        config.setMaxAge(3600L); // 1 hour cache
+        
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
+        
         return new CorsFilter(source);
     }
 }
