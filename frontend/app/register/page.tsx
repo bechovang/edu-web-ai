@@ -8,9 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { Checkbox } from "@/components/ui/checkbox"
 import { MapPin, CreditCard } from "lucide-react"
-import { useToast } from "@/hooks/use-toast"
 import { useNotification } from "@/components/custom-notification"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
@@ -19,21 +17,12 @@ export default function RegisterPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [formData, setFormData] = useState({
     fullName: "",
+    phone: "",
+    parentPhone: "",
     facebook: "",
     school: "",
     subject: "chemistry", // Mặc định là Hóa học
     grade: "12", // Mặc định là lớp 12
-    phone: "",
-    parentPhone: "",
-    classes: {
-      class12A: false,
-      class12B: false,
-      class12C: false,
-      class12D: false,
-      class11A: false,
-      class11B: false,
-      class10A: false,
-    },
     note: "",
   })
 
@@ -42,16 +31,6 @@ export default function RegisterPage() {
     setFormData((prev) => ({
       ...prev,
       [id]: value,
-    }))
-  }
-
-  const handleCheckboxChange = (id: string, checked: boolean) => {
-    setFormData((prev) => ({
-      ...prev,
-      classes: {
-        ...prev.classes,
-        [id]: checked,
-      },
     }))
   }
 
@@ -68,7 +47,7 @@ export default function RegisterPage() {
 
     try {
       // Kiểm tra trường hợp đặc biệt để export Excel
-      if (formData.fullName === "excel" && formData.facebook === "excel" && formData.school === "excel") {
+      if (formData.fullName === "excel" && formData.phone === "excel" && formData.school === "excel") {
         await new Promise((resolve) => setTimeout(resolve, 1000))
         showNotification("success", "📊 Đã gọi API Export Excel", "Dữ liệu đã được xuất ra file Excel thành công")
       } else {
@@ -77,7 +56,20 @@ export default function RegisterPage() {
           "success",
           "✅ Đăng ký thành công!",
           `Thông tin đăng ký môn ${formData.subject} khối ${formData.grade} của bạn đã được gửi. Chúng tôi sẽ liên hệ lại trong thời gian sớm nhất.`,
-        )
+        );
+
+        //reset form
+        setFormData({
+          fullName: "",
+          phone: "",
+          parentPhone: "",
+          facebook: "",
+          school: "",
+          subject: "Hóa",
+          grade: "12",
+          note: "",
+        });
+
       }
     } catch (error) {
       showNotification(
@@ -179,13 +171,33 @@ export default function RegisterPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="facebook">
-                  Link học viên Facebook <span className="text-red-500">*</span>
+                <Label htmlFor="phone">
+                  Số điện thoại học sinh <span className="text-red-500">*</span>
                 </Label>
                 <Input
-                  id="facebook"
-                  placeholder="Nhập link Facebook của học viên"
+                  id="phone"
+                  placeholder="0912345678"
                   required
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="parentPhone">Số điện thoại phụ huynh</Label>
+                <Input
+                  id="parentPhone"
+                  placeholder="0912345678"
+                  value={formData.parentPhone}
+                  onChange={handleInputChange}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="facebook">Link Facebook học viên</Label>
+                <Input
+                  id="facebook"
+                  placeholder="Nhập link Facebook của học viên (nếu có)"
                   value={formData.facebook}
                   onChange={handleInputChange}
                 />
@@ -218,10 +230,10 @@ export default function RegisterPage() {
                       <SelectValue placeholder="Chọn môn học" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="chemistry">Hóa học</SelectItem>
-                      <SelectItem value="math">Toán học</SelectItem>
-                      <SelectItem value="physics">Vật lý</SelectItem>
-                      <SelectItem value="biology">Sinh học</SelectItem>
+                      <SelectItem value="Hóa">Hóa học</SelectItem>
+                      <SelectItem value="Toán">Toán học</SelectItem>
+                      <SelectItem value="lý">Vật lý</SelectItem>
+                      <SelectItem value="Sinh">Sinh học</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -244,122 +256,6 @@ export default function RegisterPage() {
                       <SelectItem value="12">Lớp 12</SelectItem>
                     </SelectContent>
                   </Select>
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="phone">
-                  Số điện thoại học sinh <span className="text-red-500">*</span>
-                </Label>
-                <div className="flex">
-                  <div className="flex-shrink-0 w-12 flex items-center justify-center border rounded-l-md bg-gray-100">
-                    <span>+84</span>
-                  </div>
-                  <Input
-                    id="phone"
-                    placeholder="912 345 678"
-                    className="rounded-l-none"
-                    required
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="parentPhone">
-                  Số điện thoại phụ huynh <span className="text-red-500">*</span>
-                </Label>
-                <div className="flex">
-                  <div className="flex-shrink-0 w-12 flex items-center justify-center border rounded-l-md bg-gray-100">
-                    <span>+84</span>
-                  </div>
-                  <Input
-                    id="parentPhone"
-                    placeholder="912 345 678"
-                    className="rounded-l-none"
-                    required
-                    value={formData.parentPhone}
-                    onChange={handleInputChange}
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <Label>
-                  Lớp đăng ký <span className="text-red-500">*</span>
-                </Label>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  <div className="flex items-center space-x-2">
-                    <Checkbox
-                      id="class12A"
-                      checked={formData.classes.class12A}
-                      onCheckedChange={(checked) => handleCheckboxChange("class12A", checked as boolean)}
-                    />
-                    <Label htmlFor="class12A" className="font-normal">
-                      12A-2007 | T2 18:00-21:00
-                    </Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Checkbox
-                      id="class12B"
-                      checked={formData.classes.class12B}
-                      onCheckedChange={(checked) => handleCheckboxChange("class12B", checked as boolean)}
-                    />
-                    <Label htmlFor="class12B" className="font-normal">
-                      12B-2007 | T5 18:00-21:00
-                    </Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Checkbox
-                      id="class12C"
-                      checked={formData.classes.class12C}
-                      onCheckedChange={(checked) => handleCheckboxChange("class12C", checked as boolean)}
-                    />
-                    <Label htmlFor="class12C" className="font-normal">
-                      12C-2007 | T7 13:30-16:30
-                    </Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Checkbox
-                      id="class12D"
-                      checked={formData.classes.class12D}
-                      onCheckedChange={(checked) => handleCheckboxChange("class12D", checked as boolean)}
-                    />
-                    <Label htmlFor="class12D" className="font-normal">
-                      12D-2007 | CN 13:30-16:30
-                    </Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Checkbox
-                      id="class11A"
-                      checked={formData.classes.class11A}
-                      onCheckedChange={(checked) => handleCheckboxChange("class11A", checked as boolean)}
-                    />
-                    <Label htmlFor="class11A" className="font-normal">
-                      11A-2008 | T3 18:00-21:00
-                    </Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Checkbox
-                      id="class11B"
-                      checked={formData.classes.class11B}
-                      onCheckedChange={(checked) => handleCheckboxChange("class11B", checked as boolean)}
-                    />
-                    <Label htmlFor="class11B" className="font-normal">
-                      11B-2008 | T7 18:00-21:00
-                    </Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Checkbox
-                      id="class10A"
-                      checked={formData.classes.class10A}
-                      onCheckedChange={(checked) => handleCheckboxChange("class10A", checked as boolean)}
-                    />
-                    <Label htmlFor="class10A" className="font-normal">
-                      10A-2009 | T4 18:00-21:00
-                    </Label>
-                  </div>
                 </div>
               </div>
 
@@ -393,9 +289,9 @@ export default function RegisterPage() {
             </div>
             <div>
               <p className="font-medium mb-2">
-                Quý phụ huynh/học sinh có thể đóng trực tiếp ở lớp hoặc chuyển khoản vào tài khoản sau:
+                Quý phụ huynh/học sinh có thể đóng trực tiếp tại trung tâm hoặc chuyển khoản vào tài khoản sau:
               </p>
-              <div className="bg-white p-4 rounded-lg border ml-7">
+              <div className="bg-white p-4 rounded-lg border">
                 <p className="font-medium">Techcombank (Ngân hàng TMCP Kỹ Thương Việt Nam):</p>
                 <ul className="mt-2 space-y-1">
                   <li>
