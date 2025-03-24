@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: eduweb
+    runtime: docker
+    env: java
+    database:
+      postgresql: edudb
