@@ -1,7 +1,12 @@
 services:
   - type: web
-    name: eduweb
+    name: eduweb-backend
     runtime: docker
     env: java
+    build:
+      dockerfile: Dockerfile
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
     database:
-      postgresql: edudb
+      postgresql: edudb_cwq0
