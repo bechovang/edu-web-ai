@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import Script from "next/script"
+import { NotificationProvider } from "@/components/custom-notification" // Thêm import này
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -39,9 +40,12 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
-          <Navbar />
-          {children}
-          <Footer />
+          {/* Thêm NotificationProvider ở đây */}
+          <NotificationProvider>
+            <Navbar />
+            {children}
+            <Footer />
+          </NotificationProvider>
         </ThemeProvider>
       </body>
     </html>
