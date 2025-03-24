@@ -20,20 +20,23 @@ public class Registration {
     @Column(nullable = false, length = 255)
     private String fullName;
 
-    @Column(nullable = false, columnDefinition = "TEXT")
+    @Column(length = 20)
+    private String studentPhone;
+
+    @Column(length = 20)
+    private String parentPhone;
+
+    @Column(columnDefinition = "TEXT")
     private String facebookLink;
 
     @Column(nullable = false, length = 255)
     private String school;
 
-    @Column(nullable = false, length = 20)
-    private String studentPhone;
+    @Column(nullable = false, length = 50)
+    private String subject; // Môn học: Hóa, Toán, Lý
 
-    @Column(nullable = false, length = 20)
-    private String parentPhone;
-
-    @Column(nullable = false, columnDefinition = "TEXT")
-    private String registeredClasses; // Lưu JSON hoặc danh sách lớp dạng String
+    @Column(nullable = false, length = 10)
+    private String grade; // Khối lớp: 10, 11, 12
 
     @Column(columnDefinition = "TEXT")
     private String note;
