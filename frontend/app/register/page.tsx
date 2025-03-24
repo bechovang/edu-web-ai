@@ -180,7 +180,7 @@ export default function RegisterPage() {
 
               <div className="space-y-2">
                 <Label htmlFor="facebook">
-                  Link học viên Facebook <span className="text-red-500">*</span>
+                  Link Facebook của học viên <span className="text-red-500">*</span>
                 </Label>
                 <Input
                   id="facebook"
@@ -203,6 +203,36 @@ export default function RegisterPage() {
                   onChange={handleInputChange}
                 />
               </div>
+
+              
+
+              <div className="space-y-2">
+                <Label htmlFor="phone">
+                  Số điện thoại học sinh <span className="text-red-500">*</span>
+                </Label>
+                <Input
+                  id="phone"
+                  placeholder="Nhập số điện thoại (VD: 0912345678)"
+                  required
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="parentPhone">
+                  Số điện thoại phụ huynh <span className="text-red-500">*</span>
+                </Label>
+                <Input
+                  id="parentPhone"
+                  placeholder="Nhập số điện thoại PH (VD: 0987654321)"
+                  required
+                  value={formData.parentPhone}
+                  onChange={handleInputChange}
+                />
+              </div>
+
+
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
@@ -244,122 +274,6 @@ export default function RegisterPage() {
                       <SelectItem value="12">Lớp 12</SelectItem>
                     </SelectContent>
                   </Select>
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="phone">
-                  Số điện thoại học sinh <span className="text-red-500">*</span>
-                </Label>
-                <div className="flex">
-                  <div className="flex-shrink-0 w-12 flex items-center justify-center border rounded-l-md bg-gray-100">
-                    <span>+84</span>
-                  </div>
-                  <Input
-                    id="phone"
-                    placeholder="912 345 678"
-                    className="rounded-l-none"
-                    required
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="parentPhone">
-                  Số điện thoại phụ huynh <span className="text-red-500">*</span>
-                </Label>
-                <div className="flex">
-                  <div className="flex-shrink-0 w-12 flex items-center justify-center border rounded-l-md bg-gray-100">
-                    <span>+84</span>
-                  </div>
-                  <Input
-                    id="parentPhone"
-                    placeholder="912 345 678"
-                    className="rounded-l-none"
-                    required
-                    value={formData.parentPhone}
-                    onChange={handleInputChange}
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <Label>
-                  Lớp đăng ký <span className="text-red-500">*</span>
-                </Label>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  <div className="flex items-center space-x-2">
-                    <Checkbox
-                      id="class12A"
-                      checked={formData.classes.class12A}
-                      onCheckedChange={(checked) => handleCheckboxChange("class12A", checked as boolean)}
-                    />
-                    <Label htmlFor="class12A" className="font-normal">
-                      12A-2007 | T2 18:00-21:00
-                    </Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Checkbox
-                      id="class12B"
-                      checked={formData.classes.class12B}
-                      onCheckedChange={(checked) => handleCheckboxChange("class12B", checked as boolean)}
-                    />
-                    <Label htmlFor="class12B" className="font-normal">
-                      12B-2007 | T5 18:00-21:00
-                    </Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Checkbox
-                      id="class12C"
-                      checked={formData.classes.class12C}
-                      onCheckedChange={(checked) => handleCheckboxChange("class12C", checked as boolean)}
-                    />
-                    <Label htmlFor="class12C" className="font-normal">
-                      12C-2007 | T7 13:30-16:30
-                    </Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Checkbox
-                      id="class12D"
-                      checked={formData.classes.class12D}
-                      onCheckedChange={(checked) => handleCheckboxChange("class12D", checked as boolean)}
-                    />
-                    <Label htmlFor="class12D" className="font-normal">
-                      12D-2007 | CN 13:30-16:30
-                    </Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Checkbox
-                      id="class11A"
-                      checked={formData.classes.class11A}
-                      onCheckedChange={(checked) => handleCheckboxChange("class11A", checked as boolean)}
-                    />
-                    <Label htmlFor="class11A" className="font-normal">
-                      11A-2008 | T3 18:00-21:00
-                    </Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Checkbox
-                      id="class11B"
-                      checked={formData.classes.class11B}
-                      onCheckedChange={(checked) => handleCheckboxChange("class11B", checked as boolean)}
-                    />
-                    <Label htmlFor="class11B" className="font-normal">
-                      11B-2008 | T7 18:00-21:00
-                    </Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Checkbox
-                      id="class10A"
-                      checked={formData.classes.class10A}
-                      onCheckedChange={(checked) => handleCheckboxChange("class10A", checked as boolean)}
-                    />
-                    <Label htmlFor="class10A" className="font-normal">
-                      10A-2009 | T4 18:00-21:00
-                    </Label>
-                  </div>
                 </div>
               </div>
 
