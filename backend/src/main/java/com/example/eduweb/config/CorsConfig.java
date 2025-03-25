@@ -18,7 +18,7 @@ public class CorsConfig {
         config.setAllowCredentials(true);
         config.setAllowedOrigins(List.of(
                 "http://localhost:3000", // Frontend khi chạy local
-                "https://edu-web-frontend.vercel.app/" // Frontend trên Render
+                "https://edu-web-frontend.vercel.app" // Frontend trên Render
         ));
         config.setAllowedHeaders(List.of("Origin", "Content-Type", "Accept", "Authorization"));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
@@ -26,3 +26,4 @@ public class CorsConfig {
         return new CorsFilter(source);
     }
 }
+
