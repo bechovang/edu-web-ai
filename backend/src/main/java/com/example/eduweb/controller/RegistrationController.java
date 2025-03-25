@@ -12,7 +12,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/registrations")
-@CrossOrigin(origins = {"http://localhost:3000", "https://edu-web-frontend.vercel.app"},
+@CrossOrigin(origins = {"http://localhost:3000", 
+                    "https://edu-web-frontend.vercel.app",
+                    "https://trungtamanhbinhminh-bechovangs-projects.vercel.app",
+                    "https://trungtamanhbinhminh-bechovang-bechovangs-projects.vercel.app"},
             allowedHeaders = "*",
             methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.OPTIONS},
             allowCredentials = "true")

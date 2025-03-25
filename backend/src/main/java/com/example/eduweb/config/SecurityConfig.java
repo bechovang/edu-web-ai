@@ -32,7 +32,9 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList(
             "http://localhost:3000", 
-            "https://edu-web-frontend.vercel.app"
+                "https://edu-web-frontend.vercel.app",
+                "https://trungtamanhbinhminh-bechovangs-projects.vercel.app",
+                "https://trungtamanhbinhminh-bechovang-bechovangs-projects.vercel.app"
         ));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
