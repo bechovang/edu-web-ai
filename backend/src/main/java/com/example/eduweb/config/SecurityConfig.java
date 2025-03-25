@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 public class SecurityConfig {
@@ -11,13 +12,8 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            // Cấu hình CORS (không dùng .cors().and() nữa)
-            .cors(cors -> cors.configure(http))
-            
-            // Tắt CSRF (cách mới)
+            .cors(withDefaults()) // Sử dụng withDefaults() đã được import
             .csrf(csrf -> csrf.disable())
-            
-            // Cấu hình authorization với Lambda DSL
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/**").permitAll()
                 .anyRequest().authenticated()

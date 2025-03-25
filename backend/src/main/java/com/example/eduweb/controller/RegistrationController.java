@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/registrations")
+@CrossOrigin(origins = {"http://localhost:3000", "https://edu-web-frontend.vercel.app"})
 public class RegistrationController {
 
     private static final Logger logger = LoggerFactory.getLogger(RegistrationController.class);
