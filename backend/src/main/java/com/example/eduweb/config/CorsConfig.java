@@ -5,40 +5,24 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
-import java.util.Arrays;
 
+import java.util.List;
 
 @Configuration
 public class CorsConfig {
 
     @Bean
     public CorsFilter corsFilter() {
-        System.out.println("Initializing CORS Filter...");
-        
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        
-        // Sử dụng allowedOriginPatterns thay vì allowedOrigins để linh hoạt hơn
-        config.setAllowedOriginPatterns(Arrays.asList(
-            "http://localhost:[*]",
-            "https://*.vercel.app",
-            "https://*.onrender.com",
-            "https://*.render.com"
+        config.setAllowedOrigins(List.of(
+                "http://localhost:3000", // Frontend khi chạy local
+                "https://edu-web-frontend.vercel.app/" // Frontend trên Render
         ));
-        
-        config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH", "HEAD"));
-        config.setAllowedHeaders(Arrays.asList("*"));
-        config.setExposedHeaders(Arrays.asList(
-            "Authorization", 
-            "Content-Disposition",
-            "Access-Control-Allow-Origin",
-            "Access-Control-Allow-Credentials"
-        ));
-        config.setMaxAge(3600L); // 1 hour cache
-        
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        config.setAllowedHeaders(List.of("Origin", "Content-Type", "Accept", "Authorization"));
+        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         source.registerCorsConfiguration("/**", config);
-        
         return new CorsFilter(source);
     }
 }
