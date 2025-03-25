@@ -11,7 +11,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { MapPin, CreditCard } from "lucide-react"
 import { useNotification } from "@/components/custom-notification"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import api from "@/lib/api" // Sử dụng API service đã cấu hình
+import axios from "axios"
 
 export default function RegisterPage() {
   const { showNotification } = useNotification()
@@ -25,6 +25,14 @@ export default function RegisterPage() {
     subject: "Hóa",
     grade: "12",
     note: "",
+  })
+
+  // Định nghĩa baseURL trực tiếp trong component
+  const api = axios.create({
+    baseURL: "https://eduweb-backend.onrender.com",
+    headers: {
+      "Content-Type": "application/json",
+    },
   })
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -53,10 +61,10 @@ export default function RegisterPage() {
         formData.facebook.toLowerCase() === "excel";
   
       if (isExportRequest) {
-        await api.get('api/registrations/export-excel');
+        await api.get('/api/registrations/export-excel');
         showNotification("success", "📊 Export Excel", "Yêu cầu export đã được gửi thành công");
       } else {
-        await api.post('api/registrations', {
+        await api.post('/api/registrations', {
           fullName: formData.fullName,
           studentPhone: formData.phone,
           parentPhone: formData.parentPhone,
@@ -68,7 +76,6 @@ export default function RegisterPage() {
         });
   
         showNotification("success", "✅ Thành công", "Đăng ký thành công");
-        // Reset form...
         setFormData({
           fullName: "",
           phone: "",
