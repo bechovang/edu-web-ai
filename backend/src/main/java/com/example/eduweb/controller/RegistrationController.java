@@ -12,7 +12,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/registrations")
-@CrossOrigin(origins = {"http://localhost:3000", "https://edu-web-frontend.vercel.app"}) // Cho phép domain frontend
+@CrossOrigin(origins = {"http://localhost:3000", "https://edu-web-frontend.vercel.app"},
+            allowedHeaders = "*",
+            methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.OPTIONS},
+            allowCredentials = "true")
 public class RegistrationController {
 
     private static final Logger logger = LoggerFactory.getLogger(RegistrationController.class);
@@ -29,10 +32,9 @@ public class RegistrationController {
 
     @PostMapping
     public ResponseEntity<String> registerStudent(@RequestBody Registration registration) {
-
         System.out.println(GREEN + "\n============================");
         System.out.println("API registration da nhan request: " + registration);
-        System.out.println("============================\n"  + RESET);
+        System.out.println("============================\n" + RESET);
 
         Registration savedRegistration = repository.save(registration);
         emailService.sendRegistrationEmail(savedRegistration);
@@ -40,14 +42,13 @@ public class RegistrationController {
         logger.info("Dang ky thanh cong: {}", savedRegistration);
 
         return ResponseEntity.ok("Đăng ký thành công!");
-
     }
 
     @GetMapping("/export-excel")
     public ResponseEntity<String> exportAndSendExcel() {
         System.out.println(GREEN + "\n============================");
         System.out.println("API export Excel da nhan request: ");
-        System.out.println("============================\n"  + RESET);
+        System.out.println("============================\n" + RESET);
         try {
             List<Registration> registrations = repository.findAll();
             if (registrations.isEmpty()) {
@@ -58,7 +59,7 @@ public class RegistrationController {
     
             System.out.println(GREEN + "\n============================");
             System.out.println("Da gui file Excel ve mail cua admin ");
-            System.out.println("============================\n"  + RESET);
+            System.out.println("============================\n" + RESET);
     
             return ResponseEntity.ok("Email with the Excel file has been sent successfully!");
         } catch (Exception e) {
@@ -67,4 +68,9 @@ public class RegistrationController {
         }
     }
     
+    // Thêm endpoint OPTIONS để xử lý preflight request
+    @RequestMapping(method = RequestMethod.OPTIONS)
+    public ResponseEntity<?> handleOptions() {
+        return ResponseEntity.ok().build();
+    }
 }
