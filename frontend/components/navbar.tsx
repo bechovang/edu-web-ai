@@ -30,7 +30,7 @@ export default function Navbar() {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6">
           {navItems.map((item) => (
-            <Link key={item.name} href={item.href} className="text-sm font-medium transition-colors hover:text-primary">
+            <Link key={item.name} href={item.href} className="text-sm font-medium transition-colors hover:text-red-600">
               {item.name}
             </Link>
           ))}

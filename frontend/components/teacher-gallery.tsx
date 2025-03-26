@@ -2,7 +2,8 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { Dialog, DialogContent } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
 import { Card } from "@/components/ui/card"
 
 const teacherImages = [
@@ -61,6 +62,9 @@ export default function TeacherGallery() {
 
       <Dialog open={!!selectedImage} onOpenChange={(open) => !open && setSelectedImage(null)}>
         <DialogContent className="max-w-3xl">
+          <VisuallyHidden>
+            <DialogTitle>Hidden Title</DialogTitle>
+          </VisuallyHidden>
           {selectedImage && (
             <div className="flex flex-col items-center">
               <div className="relative w-full h-[60vh]">
