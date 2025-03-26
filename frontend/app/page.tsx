@@ -16,7 +16,7 @@ export default function HomePage() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image src="/images/hero-background.jpg" alt="Background" fill className="object-cover" priority />
-          <div className="absolute inset-0 bg-blue-900/70"></div>
+          <div className="absolute inset-0 bg-red-900/70"></div>
         </div>
 
         {/* Content */}
@@ -60,23 +60,23 @@ export default function HomePage() {
           <div className="overflow-x-auto rounded-lg shadow-lg">
             <Table className="w-full text-center border-collapse">
               <TableHeader>
-                <TableRow className="border-2 border-blue-300">
-                  <TableHead className="bg-blue-700 text-white border-2 border-blue-300 text-center">
+                <TableRow className="border-2 border-red-300">
+                  <TableHead className="bg-red-700 text-white border-2 border-red-300 text-center">
                     Lớp (khóa)
                   </TableHead>
-                  <TableHead className="bg-blue-700 text-white border-2 border-blue-300 text-center">
+                  <TableHead className="bg-red-700 text-white border-2 border-red-300 text-center">
                     T2
                   </TableHead>
-                  <TableHead className="bg-blue-700 text-white border-2 border-blue-300 text-center">
+                  <TableHead className="bg-red-700 text-white border-2 border-red-300 text-center">
                     T3
                   </TableHead>
-                  <TableHead className="bg-blue-700 text-white border-2 border-blue-300 text-center">
+                  <TableHead className="bg-red-700 text-white border-2 border-red-300 text-center">
                     T4
                   </TableHead>
-                  <TableHead className="bg-blue-700 text-white border-2 border-blue-300 text-center">
+                  <TableHead className="bg-red-700 text-white border-2 border-red-300 text-center">
                     T5
                   </TableHead>
-                  <TableHead className="bg-blue-700 text-white border-2 border-blue-300 text-center">
+                  <TableHead className="bg-red-700 text-white border-2 border-red-300 text-center">
                     T6
                   </TableHead>
                 </TableRow>
@@ -93,13 +93,13 @@ export default function HomePage() {
                 ].map((row, index) => (
                   <TableRow
                     key={index}
-                    className={`border-2 border-blue-300 ${index % 2 === 0 ? "bg-white" : "bg-[#DCEEFF]"}`}
+                    className={`border-2 border-red-300 ${index % 2 === 0 ? "bg-white" : "bg-red-100"}`}
                   >
-                    <TableCell className="font-medium border-2 border-blue-300 text-center">
+                    <TableCell className="font-medium border-2 border-red-300 text-center">
                       {row.name}
                     </TableCell>
                     {row.slots.map((slot, i) => (
-                      <TableCell key={i} className="border-2 border-blue-300 text-center">
+                      <TableCell key={i} className="border-2 border-red-300 text-center">
                         {slot}
                       </TableCell>
                     ))}

@@ -4,7 +4,7 @@ import { FaTiktok } from "react-icons/fa"
 
 export default function Footer() {
   return (
-    <footer className="bg-blue-900 text-white">
+    <footer className="bg-red-900 text-white">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
 
@@ -20,7 +20,7 @@ export default function Footer() {
               <span>Zalo: 0971515451</span>
             </div>
             <div className="flex items-center mt-2">
-              <Mail className="h-5 w-5 mr-2" />
+              <Mail className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0" />
               <span>Email: anhbinhminh.infor@gmail.com</span>
             </div>
           </div>
@@ -30,27 +30,27 @@ export default function Footer() {
             <h3 className="text-xl font-bold mb-4">Liên kết nhanh</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="hover:text-blue-300 transition-colors">
+                <Link href="/" className="hover:text-red-300 transition-colors">
                   Trang chủ
                 </Link>
               </li>
               <li>
-                <Link href="/register" className="hover:text-blue-300 transition-colors">
+                <Link href="/register" className="hover:text-red-300 transition-colors">
                   Đăng ký học
                 </Link>
               </li>
               <li>
-                <Link href="/honor" className="hover:text-blue-300 transition-colors">
+                <Link href="/honor" className="hover:text-red-300 transition-colors">
                   Vinh danh
                 </Link>
               </li>
               <li>
-                <Link href="/documents" className="hover:text-blue-300 transition-colors">
+                <Link href="/documents" className="hover:text-red-300 transition-colors">
                   Tài liệu
                 </Link>
               </li>
               <li>
-                <Link href="/tuition" className="hover:text-blue-300 transition-colors">
+                <Link href="/tuition" className="hover:text-red-300 transition-colors">
                   Học phí
                 </Link>
               </li>
@@ -61,16 +61,16 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4">Kết nối với chúng tôi</h3>
             <div className="flex space-x-4 items-center">
-              <Link href="https://www.facebook.com/abmedu" className="hover:text-blue-300 transition-colors">
+              <Link href="https://www.facebook.com/abmedu" className="hover:text-red-300 transition-colors">
                 <Facebook className="h-6 w-6" />
               </Link>
-              <Link href="https://www.tiktok.com/@yourusername" className="hover:text-blue-300 transition-colors">
+              <Link href="https://www.tiktok.com/@abmedu" className="hover:text-red-300 transition-colors">
                 <FaTiktok className="h-6 w-6" />
               </Link>
-              <Link href="https://zalo.me/659811059618688301" className="hover:text-blue-300 transition-colors font-medium">
+              <Link href="https://zalo.me/659811059618688301" className="hover:text-red-300 transition-colors font-medium">
                 Zalo
               </Link>
-              <Link href="tel:0971515451" className="hover:text-blue-300 transition-colors">
+              <Link href="tel:0971515451" className="hover:text-red-300 transition-colors">
                 <Phone className="h-6 w-6" />
               </Link>
             </div>
@@ -95,10 +95,10 @@ export default function Footer() {
               href="https://www.google.com/maps/place/Trung+t%C3%A2m+b%E1%BB%93i+d%C6%B0%E1%BB%A1ng+v%C4%83n+ho%C3%A1+%C3%81nh+B%C3%ACnh+Minh+-+ABMedu/@10.8450736,106.7963546,17z/data=!3m1!4b1!4m6!3m5!1s0x317527ee4ecfbe0f:0x1052cd27bec80e62!8m2!3d10.8450736!4d106.7989295!16s%2Fg%2F11x32x7qhk?entry=ttu&g_ep=EgoyMDI1MDMyNC4wIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center text-sm hover:text-blue-300 transition-colors mt-2"
+              className="inline-flex items-center text-sm hover:text-red-300 transition-colors mt-2"
             >
               <MapPin className="h-4 w-4 mr-1" />
-              Xem bản đồ lớn hơn
+              Mở bằng Google Map
             </Link>
             <div className="mt-2 text-xs text-gray-300">
               <p>Dữ liệu Bản đồ</p>
@@ -108,7 +108,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-blue-800 mt-8 pt-8 text-center text-sm">
+        <div className="border-t border-red-800 mt-8 pt-8 text-center text-sm">
           <p>© {new Date().getFullYear()} Trung tâm Ánh Bình Minh. Tất cả quyền được bảo lưu.</p>
           <p className="mt-2">Thiết kế bởi Ngọc Phúc</p>
         </div>
