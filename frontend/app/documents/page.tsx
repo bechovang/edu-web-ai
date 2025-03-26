@@ -108,22 +108,22 @@ export default function DocumentsPage() {
       <Tabs defaultValue="grade12" className="w-full">
 
 
-        <TabsList className="grid w-full grid-cols-3 max-w-md mx-auto mb-8 bg-blue-100 p-1 rounded-lg shadow-md border border-blue-300">
+        <TabsList className="grid w-full grid-cols-3 max-w-md mx-auto mb-8 bg-red-100 p-1 rounded-lg shadow-md border border-red-300">
           <TabsTrigger
             value="grade12"
-            className="data-[state=active]:bg-blue-700 data-[state=active]:text-white data-[state=active]:shadow-[0_0_15px_rgba(37,99,235,0.6)] transition-all duration-300 hover:bg-blue-300"
+            className="data-[state=active]:bg-red-700 data-[state=active]:text-white data-[state=active]:shadow-[0_0_15px_rgba(220,38,38,0.6)] transition-all duration-300 hover:bg-red-300"
           >
             Lớp 12
           </TabsTrigger>
           <TabsTrigger
             value="grade11"
-            className="data-[state=active]:bg-blue-700 data-[state=active]:text-white data-[state=active]:shadow-[0_0_15px_rgba(37,99,235,0.6)] transition-all duration-300 hover:bg-blue-300"
+            className="data-[state=active]:bg-red-700 data-[state=active]:text-white data-[state=active]:shadow-[0_0_15px_rgba(220,38,38,0.6)] transition-all duration-300 hover:bg-red-300"
           >
             Lớp 11
           </TabsTrigger>
           <TabsTrigger
             value="grade10"
-            className="data-[state=active]:bg-blue-700 data-[state=active]:text-white data-[state=active]:shadow-[0_0_15px_rgba(37,99,235,0.6)] transition-all duration-300 hover:bg-blue-300"
+            className="data-[state=active]:bg-red-700 data-[state=active]:text-white data-[state=active]:shadow-[0_0_15px_rgba(220,38,38,0.6)] transition-all duration-300 hover:bg-red-300"
           >
             Lớp 10
           </TabsTrigger>

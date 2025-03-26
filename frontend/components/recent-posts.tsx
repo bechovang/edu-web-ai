@@ -44,7 +44,7 @@ export default function RecentPosts() {
           </div>
           <CardContent className="p-4">
             <h3 className="font-bold text-xl mb-2">
-              <Link href={`/posts/${post.slug}`} className="hover:text-blue-600 transition-colors">
+              <Link href={`/posts/${post.slug}`} className="hover:text-red-600 transition-colors">
                 {post.title}
               </Link>
             </h3>

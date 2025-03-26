@@ -134,21 +134,21 @@ export default function HighScoreStudents() {
         {students.map((student, index) => (
           <Card
             key={index}
-            className="overflow-hidden border-2 border-blue-100 hover:border-blue-300 hover:shadow-lg transition-all cursor-pointer"
+            className="overflow-hidden border-2 border-red-100 hover:border-red-300 hover:shadow-lg transition-all cursor-pointer"
             onClick={() => setSelectedStudent(student)}
           >
             <CardContent className="p-4">
               <div className="flex flex-col sm:flex-row items-center gap-4 py-2">
-                <Avatar className="h-20 w-20 border-2 border-blue-200 shadow-md">
+                <Avatar className="h-20 w-20 border-2 border-red-200 shadow-md">
                   <AvatarImage src={student.avatar} alt={student.name} />
-                  <AvatarFallback className="bg-blue-100 text-blue-700 text-xl">
+                  <AvatarFallback className="bg-red-100 text-red-700 text-xl">
                     {getInitials(student.name)}
                   </AvatarFallback>
                 </Avatar>
                 <div className="flex-1 text-center sm:text-left mt-2 sm:mt-0">
                   <h3 className="font-bold text-lg">{student.name}</h3>
                   <div className="flex flex-wrap justify-center sm:justify-start gap-2 mt-1">
-                    <Badge className="bg-blue-600">{student.score.toFixed(2)} điểm</Badge>
+                    <Badge className="bg-red-600 hover:bg-red-700 ">{student.score.toFixed(2)} điểm</Badge>
                     {student.school && <Badge variant="outline">{student.school}</Badge>}
                   </div>
                 </div>
@@ -166,16 +166,16 @@ export default function HighScoreStudents() {
           {selectedStudent && (
             <div className="flex flex-col items-center">
               <div className="flex flex-col sm:flex-row items-center gap-6 mb-6">
-                <Avatar className="h-32 w-32 border-3 border-blue-200 shadow-lg">
+                <Avatar className="h-32 w-32 border-3 border-red-200 shadow-lg">
                   <AvatarImage src={selectedStudent.avatar} alt={selectedStudent.name} />
-                  <AvatarFallback className="bg-blue-100 text-blue-700 text-2xl">
+                  <AvatarFallback className="bg-red-100 text-red-700 text-2xl">
                     {getInitials(selectedStudent.name)}
                   </AvatarFallback>
                 </Avatar>
                 <div className="text-center sm:text-left mt-4 sm:mt-0">
                   <h2 className="text-2xl font-bold">{selectedStudent.name}</h2>
                   <div className="flex flex-wrap justify-center sm:justify-start gap-2 mt-2">
-                    <Badge className="bg-blue-600 text-lg py-1">{selectedStudent.score.toFixed(2)} điểm</Badge>
+                    <Badge className="bg-red-600 hover:bg-red-700 text-lg py-1">{selectedStudent.score.toFixed(2)} điểm</Badge>
                     {selectedStudent.school && (
                       <Badge variant="outline" className="text-lg py-1">
                         {selectedStudent.school}
