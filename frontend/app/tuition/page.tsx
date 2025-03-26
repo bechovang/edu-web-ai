@@ -11,11 +11,31 @@ export default function TuitionPage() {
       <h1 className="text-3xl font-bold text-center mb-8">Học phí Trung tâm Ánh Bình Minh</h1>
 
       <Tabs defaultValue="offline" className="w-full">
-        <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-4 mb-8">
-          <TabsTrigger value="offline">Offline tại lớp</TabsTrigger>
-          <TabsTrigger value="online">Online</TabsTrigger>
-          <TabsTrigger value="group">Nhóm nhỏ</TabsTrigger>
-          <TabsTrigger value="private">1:1 Online</TabsTrigger>
+        <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-4 mb-8 bg-blue-100 p-1 rounded-lg shadow-md border border-blue-300 gap-1">
+          <TabsTrigger
+            value="offline"
+            className="data-[state=active]:bg-blue-700 data-[state=active]:text-white data-[state=active]:shadow-[0_0_10px_rgba(37,99,235,0.4)] transition-all duration-200 hover:bg-blue-300 py-2"
+          >
+            Offline tại lớp
+          </TabsTrigger>
+          <TabsTrigger
+            value="online"
+            className="data-[state=active]:bg-blue-700 data-[state=active]:text-white data-[state=active]:shadow-[0_0_10px_rgba(37,99,235,0.4)] transition-all duration-200 hover:bg-blue-300 py-2"
+          >
+            Online
+          </TabsTrigger>
+          <TabsTrigger
+            value="group"
+            className="data-[state=active]:bg-blue-700 data-[state=active]:text-white data-[state=active]:shadow-[0_0_10px_rgba(37,99,235,0.4)] transition-all duration-200 hover:bg-blue-300 py-2"
+          >
+            Nhóm nhỏ
+          </TabsTrigger>
+          <TabsTrigger
+            value="private"
+            className="data-[state=active]:bg-blue-700 data-[state=active]:text-white data-[state=active]:shadow-[0_0_10px_rgba(37,99,235,0.4)] transition-all duration-200 hover:bg-blue-300 py-2"
+          >
+            1:1 Online
+          </TabsTrigger>
         </TabsList>
 
         <TabsContent value="offline">
