@@ -26,12 +26,12 @@ export default function HomePage() {
               <div className="flex items-center mb-6">
                 <Image src="/images/logo.jpg" alt="Logo Ánh Bình Minh" width={80} height={80} className="mr-4" />
                 <div>
-                  <h1 className="text-4xl md:text-5xl font-bold">Website Trung Tâm Ánh Bình Minh</h1>
+                  <h1 className="text-4xl md:text-4xl font-bold">TRUNG TÂM BỒI DƯỠNG VĂN HOÁ ÁNH BÌNH MINH</h1>
                   <h2 className="text-2xl md:text-3xl font-semibold mt-2">ABMedu</h2>
                 </div>
               </div>
               <p className="text-lg mb-8 max-w-xl">
-                trung tâm dạy học ngoài giờ - chuyên bồi dưỡng văn hoá cho học sinh phổ thông.
+                Trung Tâm dạy học ngoài giờ - chuyên bồi dưỡng văn hoá cho học sinh phổ thông.
               </p>
               <Link href="/register">
                 <Button size="lg" className="bg-amber-500 hover:bg-amber-600 text-white font-bold px-8 py-6 text-lg">
@@ -113,8 +113,8 @@ export default function HomePage() {
 
 
           <div className="mt-6 text-center">
-            <p className="mb-3">trung tâm dạy học ngoài giờ - chuyên bồi dưỡng văn hoá cho học sinh phổ thông.</p>
-            <p className="mb-6">Liên hệ qua Zalo: 0912345678 - Đăng ký học tại: www.TrungTamAnhBinhMinh.vn</p>
+            <p className="mb-3">Trung Tâm dạy học ngoài giờ - chuyên bồi dưỡng văn hoá cho học sinh phổ thông.</p>
+            <p className="mb-6">Liên hệ qua Zalo: <span className="font-medium">0971515451</span> - Đăng ký học tại: <span className="font-medium">www.TrungTamAnhBinhMinh.vn</span></p>
             <Link href="/register">
               <Button size="lg" className="bg-amber-500 hover:bg-amber-600 text-white font-bold">
                 Đăng ký học
@@ -152,7 +152,7 @@ export default function HomePage() {
 
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8">Trung tâm tự hào có đội ngũ giáo viên xuất sắc</h2>
+          <h2 className="text-3xl font-bold text-center mb-8">Trung Tâm tự hào có đội ngũ giáo viên xuất sắc</h2>
           <TeacherGallery />
         </div>
       </section>

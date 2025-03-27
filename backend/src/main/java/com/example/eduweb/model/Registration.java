@@ -49,8 +49,7 @@ public class Registration {
 
     @PrePersist
     protected void onCreate() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeZone(TimeZone.getTimeZone("Asia/Ho_Chi_Minh"));
-        this.createdAt = calendar.getTime(); // Vẫn là java.util.Date nhưng với timezone HCM
+        this.createdAt = new Date(); // Lưu theo UTC
     }
+
 }

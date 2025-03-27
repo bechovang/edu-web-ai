@@ -102,7 +102,7 @@ export default function DocumentsPage() {
       <p className="text-center text-gray-600 mb-8 max-w-3xl mx-auto">
       Trang cung cấp tài liệu miễn phí dành cho học sinh. Để đăng ký lớp học offline tại TP.HCM, 
       tham gia khóa học online hoặc nhận tài liệu giảng dạy dưới dạng file Word, vui lòng liên hệ 
-      trung tâm qua Facebook Trung tâm Ánh Bình Minh hoặc Zalo 0912345678.
+      trung tâm qua <span className="font-medium">Facebook Trung Tâm Bồi Dưỡng Ánh Bình Minh</span> hoặc <span className="font-medium">Zalo 0971515451</span>.
       </p>
 
       <Tabs defaultValue="grade12" className="w-full">

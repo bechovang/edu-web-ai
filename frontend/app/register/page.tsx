@@ -161,9 +161,9 @@ export default function RegisterPage() {
               </Table>
             </div>
             <div className="mt-3 text-center text-sm">
-              <p>Trung tâm dạy học ngoài giờ - chuyên bồi dưỡng văn hoá cho học sinh phổ thông.</p>
+              <p>Trung Tâm dạy học ngoài giờ - chuyên bồi dưỡng văn hoá cho học sinh phổ thông.</p>
               <p>
-                Liên hệ qua Zalo: <span className="font-medium">0912345678</span> • Đăng ký học tại:{" "}
+                Liên hệ qua Zalo: <span className="font-medium">0971515451</span> • Đăng ký học tại:{" "}
                 <span className="font-medium">www.TrungTamAnhBinhMinh.vn</span>
               </p>
             </div>
@@ -307,7 +307,7 @@ export default function RegisterPage() {
             </div>
             <div className="flex items-start gap-2">
               <CreditCard className="h-5 w-5 text-red-600 mt-1 flex-shrink-0" />
-              <p>Học phí các lớp đều là 700.000 đ/tháng.</p>
+              <p>Học phí các lớp: 700.000đ - 800.000đ /tháng.</p>
             </div>
 
             <div>

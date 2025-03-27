@@ -59,7 +59,7 @@ export default function TuitionPage() {
                     <CreditCard className="h-5 w-5 text-red-600 mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="font-medium">Học phí:</h3>
-                      <p>700.000 đ/tháng, đã bao gồm tài liệu</p>
+                      <p>700.000đ - 800.000đ /tháng, đã bao gồm tài liệu</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
@@ -73,14 +73,19 @@ export default function TuitionPage() {
                     <Clock className="h-5 w-5 text-red-600 mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="font-medium">Thời gian học:</h3>
-                      <p>Mỗi tuần học 1 buổi, mỗi buổi học 3 tiếng ?? </p>
+                      <p>Sắp xếp qua Zalo 0971 51 54 51 </p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <BookOpen className="h-5 w-5 text-red-600 mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="font-medium">Nội dung học:</h3>
-                      <p>các môn học lớp 10-11-12, Luyện thi tốt nghiệp THPT, Luyện thi ĐGNL-HCM</p>
+                      <ul className="list-disc pl-5 space-y-1">
+                        <li>Các môn học từ lớp 6 - lớp 12</li>
+                        <li>Luyện thi vào lớp 10</li>
+                        <li>Luyện thi THPT Quốc Gia</li>
+                        <li>Luyện thi học sinh giỏi cấp Thành phố</li>
+                      </ul>
                     </div>
                   </div>
                   <Button className="w-full bg-red-600 hover:bg-red-700" asChild>
@@ -127,16 +132,19 @@ export default function TuitionPage() {
                     <Clock className="h-5 w-5 text-red-600 mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="font-medium">Thời gian học:</h3>
-                      <p>Có thể học bất kỳ lúc nào đến khi kết thúc năm học</p>
+                      <p>Sắp xếp qua Zalo 0971 51 54 51</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <BookOpen className="h-5 w-5 text-red-600 mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="font-medium">Nội dung học:</h3>
-                      <p>
-                       các môn học lớp 10-11-12, Luyện thi tốt nghiệp THPT, Luyện thi ĐGNL-HCM
-                      </p>
+                      <ul className="list-disc pl-5 space-y-1">
+                        <li>Các môn học từ lớp 6 - lớp 12</li>
+                        <li>Luyện thi vào lớp 10</li>
+                        <li>Luyện thi THPT Quốc Gia</li>
+                        <li>Luyện thi học sinh giỏi cấp Thành phố</li>
+                      </ul>
                     </div>
                   </div>
                   <Button className="w-full bg-red-600 hover:bg-red-700" asChild>
@@ -188,16 +196,19 @@ export default function TuitionPage() {
                     <Clock className="h-5 w-5 text-red-600 mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="font-medium">Thời gian học:</h3>
-                      <p>Sắp xếp qua Zalo 097 151 54 51</p>
+                      <p>Sắp xếp qua Zalo 0971 51 54 51</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <BookOpen className="h-5 w-5 text-red-600 mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="font-medium">Nội dung học:</h3>
-                      <p>
-                      các môn học lớp 10-11-12, Luyện thi tốt nghiệp THPT, Luyện thi ĐGNL-HCM
-                      </p>
+                      <ul className="list-disc pl-5 space-y-1">
+                        <li>Các môn học từ lớp 6 - lớp 12</li>
+                        <li>Luyện thi vào lớp 10</li>
+                        <li>Luyện thi THPT Quốc Gia</li>
+                        <li>Luyện thi học sinh giỏi cấp Thành phố</li>
+                      </ul>
                     </div>
                   </div>
                   <Button className="w-full bg-red-600 hover:bg-red-700" asChild>
@@ -244,16 +255,19 @@ export default function TuitionPage() {
                     <Clock className="h-5 w-5 text-red-600 mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="font-medium">Thời gian học:</h3>
-                      <p>Sắp xếp qua Zalo 0971515451</p>
+                      <p>Sắp xếp qua Zalo 0971 51 54 51</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <BookOpen className="h-5 w-5 text-red-600 mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="font-medium">Nội dung học:</h3>
-                      <p>
-                        các môn học lớp 10-11-12, Luyện thi tốt nghiệp THPT, Luyện thi ĐGNL-HCM
-                      </p>
+                      <ul className="list-disc pl-5 space-y-1">
+                        <li>Các môn học từ lớp 6 - lớp 12</li>
+                        <li>Luyện thi vào lớp 10</li>
+                        <li>Luyện thi THPT Quốc Gia</li>
+                        <li>Luyện thi học sinh giỏi cấp Thành phố</li>
+                      </ul>
                     </div>
                   </div>
                   <Button className="w-full bg-red-600 hover:bg-red-700" asChild>

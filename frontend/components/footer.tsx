@@ -109,7 +109,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-red-800 mt-8 pt-8 text-center text-sm">
-          <p>© {new Date().getFullYear()} Trung tâm Ánh Bình Minh. Tất cả quyền được bảo lưu.</p>
+          <p>© {new Date().getFullYear()} Trung Tâm Ánh Bình Minh. Tất cả quyền được bảo lưu.</p>
           <p className="mt-2">Thiết kế bởi Ngọc Phúc</p>
         </div>
       </div>
