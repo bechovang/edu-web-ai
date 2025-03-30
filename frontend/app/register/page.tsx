@@ -22,12 +22,16 @@ export default function RegisterPage() {
     parentPhone: "",
     facebook: "",
     school: "",
-    subject: "Hóa",
-    grade: "12",
+    subject: "",
+    grade: "",
     note: "",
   })
 
-  // Định nghĩa baseURL trực tiếp trong component
+  const [errors, setErrors] = useState({
+    subject: false,
+    grade: false,
+  })
+
   const api = axios.create({
     baseURL: "https://eduweb-backend.onrender.com",
     headers: {
@@ -48,10 +52,24 @@ export default function RegisterPage() {
       ...prev,
       [field]: value,
     }))
+    setErrors(prev => ({...prev, [field]: false}))
   }
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    
+    const newErrors = {
+      subject: !formData.subject,
+      grade: !formData.grade,
+    };
+    
+    setErrors(newErrors);
+    
+    if (newErrors.subject || newErrors.grade) {
+      showNotification("error", "❌ Lỗi", "Vui lòng chọn đầy đủ môn học và lớp");
+      return;
+    }
+    
     setIsSubmitting(true);
   
     try {
@@ -82,8 +100,8 @@ export default function RegisterPage() {
           parentPhone: "",
           facebook: "",
           school: "",
-          subject: "Hóa",
-          grade: "12",
+          subject: "",
+          grade: "",
           note: "",
         })
       }
@@ -103,34 +121,34 @@ export default function RegisterPage() {
   };
 
   return (
-    <main className="container mx-auto px-4 py-12">
+    <main className="container mx-auto px-2 sm:px-4 py-6 sm:py-12">
       <div className="max-w-3xl mx-auto">
-        <h1 className="text-3xl font-bold text-center mb-8">Đăng ký học</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold text-center mb-4 sm:mb-8">Đăng ký học</h1>
+        
 
-        <div className="mb-8">
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+        {/* Lịch học */}
+        <section className="py-8 bg-gray-50 rounded-lg mb-6 sm:mb-8">
+          <div className="px-4">
+            <h2 className="text-xl sm:text-2xl font-bold text-center mb-4">
+              LỊCH HỌC CÁC LỚP TẠI TRUNG TÂM - NĂM HỌC 2024-2025
+            </h2>
+            <p className="text-center mb-4 text-sm sm:text-base">Địa chỉ: số 101 Làng Tăng Phú, P Tăng Nhơn Phú A, TP Thủ Đức, TP Hồ Chí Minh</p>
+
             <div className="overflow-x-auto rounded-lg shadow-lg">
-              <Table className="w-full text-center border-collapse">
+              <Table className="w-full text-center border-collapse text-xs sm:text-sm">
                 <TableHeader>
                   <TableRow className="border-2 border-red-300">
-                    <TableHead className="bg-red-700 text-white border-2 border-red-300 text-center">
+                    <TableHead className="bg-red-700 text-white border-2 border-red-300 p-2 sm:p-3">
                       Lớp (khóa)
                     </TableHead>
-                    <TableHead className="bg-red-700 text-white border-2 border-red-300 text-center">
-                      T2
-                    </TableHead>
-                    <TableHead className="bg-red-700 text-white border-2 border-red-300 text-center">
-                      T3
-                    </TableHead>
-                    <TableHead className="bg-red-700 text-white border-2 border-red-300 text-center">
-                      T4
-                    </TableHead>
-                    <TableHead className="bg-red-700 text-white border-2 border-red-300 text-center">
-                      T5
-                    </TableHead>
-                    <TableHead className="bg-red-700 text-white border-2 border-red-300 text-center">
-                      T6
-                    </TableHead>
+                    {['T2', 'T3', 'T4', 'T5', 'T6'].map((day) => (
+                      <TableHead 
+                        key={day} 
+                        className="bg-red-700 text-white border-2 border-red-300 p-2 sm:p-3 text-center"
+                      >
+                        {day}
+                      </TableHead>
+                    ))}
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -147,11 +165,11 @@ export default function RegisterPage() {
                       key={index}
                       className={`border-2 border-red-300 ${index % 2 === 0 ? "bg-white" : "bg-red-100"}`}
                     >
-                      <TableCell className="font-medium border-2 border-red-300 text-center">
+                      <TableCell className="font-medium border-2 border-red-300 p-2 sm:p-3">
                         {row.name}
                       </TableCell>
                       {row.slots.map((slot, i) => (
-                        <TableCell key={i} className="border-2 border-red-300 text-center">
+                        <TableCell key={i} className="border-2 border-red-300 p-2 sm:p-3">
                           {slot}
                         </TableCell>
                       ))}
@@ -160,26 +178,32 @@ export default function RegisterPage() {
                 </TableBody>
               </Table>
             </div>
-            <div className="mt-3 text-center text-sm">
+            <div className="mt-4 text-center text-xs sm:text-sm">
               <p>Trung Tâm dạy học ngoài giờ - chuyên bồi dưỡng văn hoá cho học sinh phổ thông.</p>
               <p>
-                Liên hệ qua Zalo: <span className="font-medium">0971515451</span> • Đăng ký học tại:{" "}
+                Liên hệ qua Zalo: <span className="font-medium">0971515451</span>
+                <br className="sm:hidden" />
+                <span className="hidden sm:inline"> • </span>
+                Đăng ký học tại:{" "}
                 <span className="font-medium">www.TrungTamAnhBinhMinh.vn</span>
               </p>
             </div>
           </div>
-        </div>
+        </section>
 
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-          <Card>
-            <CardHeader>
-              <CardTitle>Thông tin đăng ký</CardTitle>
-              <CardDescription>Vui lòng điền đầy đủ thông tin để đăng ký lớp học</CardDescription>
+        {/* Form đăng ký */}
+        <div className="bg-red-50 border border-red-200 rounded-lg p-3 sm:p-4">
+          <Card className="border-0 shadow-none">
+            <CardHeader className="p-4 sm:p-6">
+              <CardTitle className="text-xl sm:text-2xl">Thông tin đăng ký</CardTitle>
+              <CardDescription className="text-sm sm:text-base">
+                Vui lòng điền đầy đủ thông tin để đăng ký lớp học
+              </CardDescription>
             </CardHeader>
-            <CardContent>
-              <form className="space-y-6" onSubmit={handleSubmit}>
-                <div className="space-y-2">
-                  <Label htmlFor="fullName">
+            <CardContent className="p-4 sm:p-6">
+              <form className="space-y-4 sm:space-y-6" onSubmit={handleSubmit}>
+                <div className="space-y-1 sm:space-y-2">
+                  <Label htmlFor="fullName" className="text-sm sm:text-base">
                     Họ và tên <span className="text-red-500">*</span>
                   </Label>
                   <Input
@@ -188,11 +212,12 @@ export default function RegisterPage() {
                     required
                     value={formData.fullName}
                     onChange={handleInputChange}
+                    className="text-sm sm:text-base"
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="phone">
+                <div className="space-y-1 sm:space-y-2">
+                  <Label htmlFor="phone" className="text-sm sm:text-base">
                     Số điện thoại học sinh <span className="text-red-500">*</span>
                   </Label>
                   <Input
@@ -201,31 +226,38 @@ export default function RegisterPage() {
                     required
                     value={formData.phone}
                     onChange={handleInputChange}
+                    className="text-sm sm:text-base"
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="parentPhone">Số điện thoại phụ huynh</Label>
+                <div className="space-y-1 sm:space-y-2">
+                  <Label htmlFor="parentPhone" className="text-sm sm:text-base">
+                    Số điện thoại phụ huynh
+                  </Label>
                   <Input
                     id="parentPhone"
                     placeholder="0912345678"
                     value={formData.parentPhone}
                     onChange={handleInputChange}
+                    className="text-sm sm:text-base"
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="facebook">Link Facebook học viên</Label>
+                <div className="space-y-1 sm:space-y-2">
+                  <Label htmlFor="facebook" className="text-sm sm:text-base">
+                    Link Facebook học viên
+                  </Label>
                   <Input
                     id="facebook"
                     placeholder="Nhập link Facebook của học viên (nếu có)"
                     value={formData.facebook}
                     onChange={handleInputChange}
+                    className="text-sm sm:text-base"
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="school">
+                <div className="space-y-1 sm:space-y-2">
+                  <Label htmlFor="school" className="text-sm sm:text-base">
                     Trường đang học <span className="text-red-500">*</span>
                   </Label>
                   <Input
@@ -234,12 +266,13 @@ export default function RegisterPage() {
                     required
                     value={formData.school}
                     onChange={handleInputChange}
+                    className="text-sm sm:text-base"
                   />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="subject">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                  <div className="space-y-1 sm:space-y-2">
+                    <Label className="text-sm sm:text-base">
                       Môn học <span className="text-red-500">*</span>
                     </Label>
                     <Select
@@ -247,8 +280,8 @@ export default function RegisterPage() {
                       onValueChange={(value) => handleSelectChange("subject", value)}
                       required
                     >
-                      <SelectTrigger>
-                        <SelectValue placeholder="Chọn môn học" />
+                      <SelectTrigger className={`text-sm sm:text-base ${errors.subject ? "border-red-500" : ""}`}>
+                        <SelectValue placeholder="- Chọn môn -" />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="Hóa">Hóa học</SelectItem>
@@ -257,10 +290,13 @@ export default function RegisterPage() {
                         <SelectItem value="Sinh">Sinh học</SelectItem>
                       </SelectContent>
                     </Select>
+                    {errors.subject && (
+                      <p className="text-red-500 text-xs mt-1">Vui lòng chọn môn học</p>
+                    )}
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="grade">
+                  <div className="space-y-1 sm:space-y-2">
+                    <Label className="text-sm sm:text-base">
                       Khối lớp <span className="text-red-500">*</span>
                     </Label>
                     <Select
@@ -268,8 +304,8 @@ export default function RegisterPage() {
                       onValueChange={(value) => handleSelectChange("grade", value)}
                       required
                     >
-                      <SelectTrigger>
-                        <SelectValue placeholder="Chọn khối lớp" />
+                      <SelectTrigger className={`text-sm sm:text-base ${errors.grade ? "border-red-500" : ""}`}>
+                        <SelectValue placeholder="- Chọn lớp -" />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="10">Lớp 10</SelectItem>
@@ -277,20 +313,30 @@ export default function RegisterPage() {
                         <SelectItem value="12">Lớp 12</SelectItem>
                       </SelectContent>
                     </Select>
+                    {errors.grade && (
+                      <p className="text-red-500 text-xs mt-1">Vui lòng chọn khối lớp</p>
+                    )}
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="note">Ghi chú (nếu có)</Label>
+                <div className="space-y-1 sm:space-y-2">
+                  <Label htmlFor="note" className="text-sm sm:text-base">
+                    Ghi chú (nếu có)
+                  </Label>
                   <Textarea
                     id="note"
                     placeholder="Nhập ghi chú nếu có"
                     value={formData.note}
                     onChange={handleInputChange}
+                    className="text-sm sm:text-base min-h-[100px]"
                   />
                 </div>
 
-                <Button type="submit" className="w-full bg-red-600 hover:bg-red-700" disabled={isSubmitting}>
+                <Button 
+                  type="submit" 
+                  className="w-full bg-red-600 hover:bg-red-700 text-sm sm:text-base" 
+                  disabled={isSubmitting}
+                >
                   {isSubmitting ? "Đang xử lý..." : "Đăng ký"}
                 </Button>
               </form>
@@ -298,27 +344,33 @@ export default function RegisterPage() {
           </Card>
         </div>
 
-        <div className="mt-8 bg-red-50 p-6 rounded-lg">
-          <h2 className="text-xl font-bold mb-4">Thông tin thanh toán</h2>
-          <div className="space-y-3">
+        {/* Thông tin thanh toán */}
+        <div className="mt-6 sm:mt-8 bg-red-50 p-4 sm:p-6 rounded-lg">
+          <h2 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Thông tin thanh toán</h2>
+          <div className="space-y-2 sm:space-y-3">
             <div className="flex items-start gap-2">
-              <MapPin className="h-5 w-5 text-red-600 mt-1 flex-shrink-0" />
-              <p>Địa chỉ lớp: số 101 Làng Tăng Phú, P Tăng Nhơn Phú A, TP Thủ Đức, TP Hồ Chí Minh</p>
+              <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-red-600 mt-1 flex-shrink-0" />
+              <p className="text-sm sm:text-base">
+                Địa chỉ lớp: số 101 Làng Tăng Phú, P Tăng Nhơn Phú A, TP Thủ Đức, TP Hồ Chí Minh
+              </p>
             </div>
             <div className="flex items-start gap-2">
-              <CreditCard className="h-5 w-5 text-red-600 mt-1 flex-shrink-0" />
-              <p>Học phí các lớp: 700.000đ - 800.000đ /tháng.</p>
+              <CreditCard className="h-4 w-4 sm:h-5 sm:w-5 text-red-600 mt-1 flex-shrink-0" />
+              <p className="text-sm sm:text-base">
+                Học phí các lớp: 700.000đ - 800.000đ /tháng.
+              </p>
             </div>
 
             <div>
-              <p className="font-medium mb-2">
-                Quý phụ huynh/học sinh có thể đóng trực tiếp tại trung tâm hoặc chuyển khoản vào tài khoản sau:
+              <p className="font-medium text-sm sm:text-base mb-2">
+                Quý phụ huynh/học sinh có thể đóng trực tiếp tại trung tâm hoặc chuyển khoản:
               </p>
-              <div className="flex flex-col md:flex-row gap-4"> {/* Thêm flex để xếp ngang trên màn hình lớn */}
-                {/* Phần thông tin chuyển khoản */}
-                <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex-1">
-                  <p className="font-medium">Techcombank (Ngân hàng TMCP Kỹ Thương Việt Nam):</p>
-                  <ul className="mt-2 space-y-1">
+              <div className="flex flex-col gap-3 sm:gap-4">
+                <div className="bg-red-50 border border-red-200 rounded-lg p-3 sm:p-4">
+                  <p className="font-medium text-sm sm:text-base">
+                    Techcombank (Ngân hàng TMCP Kỹ Thương Việt Nam):
+                  </p>
+                  <ul className="mt-1 sm:mt-2 space-y-1 text-sm sm:text-base">
                     <li>
                       <span className="font-medium">Chủ tài khoản:</span> Nguyễn Văn A
                     </li>
@@ -329,25 +381,23 @@ export default function RegisterPage() {
                       <span className="font-medium">Chi nhánh:</span> TP Hồ Chí Minh
                     </li>
                   </ul>
-                  <p className="mt-3 text-sm text-gray-600">
+                  <p className="mt-2 text-xs sm:text-sm text-gray-600">
                     Nội dung chuyển khoản là: [Họ và tên học sinh] + [Học phí tháng].
                   </p>
                 </div>
 
-                {/* Phần QR Code - Thêm vào đây */}
-                <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex flex-col items-center justify-center">
+                <div className="bg-red-50 border border-red-200 rounded-lg p-3 sm:p-4 flex flex-col items-center justify-center">
                   <img 
                     src="/placeholder.svg" 
                     alt="QR Code thanh toán"
-                    className="w-40 h-40 object-contain" 
+                    className="w-32 h-32 sm:w-40 sm:h-40 object-contain" 
                   />
-                  <p className="mt-2 text-sm font-medium text-center">
+                  <p className="mt-1 sm:mt-2 text-xs sm:text-sm font-medium text-center">
                     Quét QR Code để thanh toán
                   </p>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>

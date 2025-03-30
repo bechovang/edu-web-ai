@@ -159,41 +159,49 @@ export default function HighScoreStudents() {
       </div>
 
       <Dialog open={!!selectedStudent} onOpenChange={(open) => !open && setSelectedStudent(null)}>
-        <DialogContent className="max-w-3xl">
-        <VisuallyHidden>
-          <DialogTitle>Hidden Title</DialogTitle>
-        </VisuallyHidden>
+        <DialogContent className="max-w-[95vw] sm:max-w-md md:max-w-2xl lg:max-w-4xl w-full">
+          <VisuallyHidden>
+            <DialogTitle>Thông tin chi tiết học sinh</DialogTitle>
+          </VisuallyHidden>
           {selectedStudent && (
             <div className="flex flex-col items-center">
-              <div className="flex flex-col sm:flex-row items-center gap-6 mb-6">
-                <Avatar className="h-32 w-32 border-3 border-red-200 shadow-lg">
+              <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-6 mb-4 md:mb-6 w-full">
+                <Avatar className="h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32 border-2 md:border-3 border-red-200 shadow-lg">
                   <AvatarImage src={selectedStudent.avatar} alt={selectedStudent.name} />
-                  <AvatarFallback className="bg-red-100 text-red-700 text-2xl">
+                  <AvatarFallback className="bg-red-100 text-red-700 text-xl md:text-2xl">
                     {getInitials(selectedStudent.name)}
                   </AvatarFallback>
                 </Avatar>
-                <div className="text-center sm:text-left mt-4 sm:mt-0">
-                  <h2 className="text-2xl font-bold">{selectedStudent.name}</h2>
-                  <div className="flex flex-wrap justify-center sm:justify-start gap-2 mt-2">
-                    <Badge className="bg-red-600 hover:bg-red-700 text-lg py-1">{selectedStudent.score.toFixed(2)} điểm</Badge>
+                <div className="text-center sm:text-left mt-2 sm:mt-0">
+                  <h2 className="text-xl sm:text-2xl font-bold">{selectedStudent.name}</h2>
+                  <div className="flex flex-wrap justify-center sm:justify-start gap-1 sm:gap-2 mt-1 sm:mt-2">
+                    <Badge className="bg-red-600 hover:bg-red-700 text-sm sm:text-base md:text-lg py-0 sm:py-1">
+                      {selectedStudent.score.toFixed(2)} điểm
+                    </Badge>
                     {selectedStudent.school && (
-                      <Badge variant="outline" className="text-lg py-1">
+                      <Badge variant="outline" className="text-sm sm:text-base md:text-lg py-0 sm:py-1">
                         {selectedStudent.school}
                       </Badge>
                     )}
                   </div>
-                  <p className="text-gray-600 mt-3">{selectedStudent.description}</p>
+                  <p className="text-gray-600 mt-2 sm:mt-3 text-sm sm:text-base">
+                    {selectedStudent.description}
+                  </p>
                 </div>
               </div>
-              <div className="relative w-full h-[60vh]">
+              <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh]">
                 <Image
                   src={selectedStudent.scoreImage || "/placeholder.svg"}
                   alt={`Bảng điểm của ${selectedStudent.name}`}
                   fill
                   className="object-contain"
+                  sizes="(max-width: 768px) 90vw, (max-width: 1024px) 80vw, 70vw"
+                  priority={false}
                 />
               </div>
-              <p className="mt-4 text-center text-sm text-gray-500">Bảng điểm kỳ thi tốt nghiệp THPT 2024</p>
+              <p className="mt-2 sm:mt-4 text-center text-xs sm:text-sm text-gray-500">
+                Bảng điểm kỳ thi tốt nghiệp THPT 2024
+              </p>
             </div>
           )}
         </DialogContent>
