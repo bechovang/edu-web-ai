@@ -88,7 +88,7 @@ export default function TuitionPage() {
                       </ul>
                     </div>
                   </div>
-                  <Button className="w-full bg-red-600 hover:bg-red-700" asChild>
+                  <Button className="w-full animate-pulse-glow-red bg-red-600 hover:bg-red-700" asChild>
                     <Link href="/register">Đăng ký học</Link>
                   </Button>
                 </div>
@@ -147,7 +147,7 @@ export default function TuitionPage() {
                       </ul>
                     </div>
                   </div>
-                  <Button className="w-full bg-red-600 hover:bg-red-700" asChild>
+                  <Button className="w-full animate-pulse-glow-red bg-red-600 hover:bg-red-700" asChild>
                     <Link href="/register">Đăng ký học</Link>
                   </Button>
                 </div>
@@ -211,7 +211,7 @@ export default function TuitionPage() {
                       </ul>
                     </div>
                   </div>
-                  <Button className="w-full bg-red-600 hover:bg-red-700" asChild>
+                  <Button className="w-full animate-pulse-glow-red bg-red-600 hover:bg-red-700" asChild>
                     <Link href="/register">Đăng ký học</Link>
                   </Button>
                 </div>
@@ -270,7 +270,7 @@ export default function TuitionPage() {
                       </ul>
                     </div>
                   </div>
-                  <Button className="w-full bg-red-600 hover:bg-red-700" asChild>
+                  <Button className="w-full animate-pulse-glow-red bg-red-600 hover:bg-red-700" asChild>
                     <Link href="/register">Đăng ký học</Link>
                   </Button>
                 </div>

@@ -34,7 +34,7 @@ export default function Navbar() {
               {item.name}
             </Link>
           ))}
-          <Button className="bg-amber-500 hover:bg-amber-600" asChild>
+          <Button className="animate-pulse-glow-amber bg-amber-500 hover:bg-amber-600" asChild>
             <Link href="/register">Đăng ký học</Link>
           </Button>
         </nav>
