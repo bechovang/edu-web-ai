@@ -146,7 +146,6 @@ function HighScoreStudentsByYear({ year }: { year: string }) {
   const [selectedStudent, setSelectedStudent] = useState<any | null>(null)
   const students = studentsByYear[year as keyof typeof studentsByYear] || []
 
-  // Function to get initials from name
   const getInitials = (name: string) => {
     return name
       .split(" ")
@@ -158,27 +157,29 @@ function HighScoreStudentsByYear({ year }: { year: string }) {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
         {students.map((student, index) => (
           <Card
             key={index}
-            className="overflow-hidden border-2 border-red-100 hover:border-red-300 hover:shadow-lg transition-all cursor-pointer"
+            className="overflow-hidden border border-red-100 hover:border-red-300 hover:shadow-md transition-all cursor-pointer"
             onClick={() => setSelectedStudent(student)}
           >
-            <CardContent className="p-4">
-              <div className="flex flex-col sm:flex-row items-center gap-4 py-2">
-                <Avatar className="h-20 w-20 border-2 border-red-300 shadow-md">
+            <CardContent className="p-3">
+              <div className="flex flex-col items-center gap-3">
+                <Avatar className="h-14 w-14 sm:h-16 sm:w-16 border-2 border-red-200">
                   <AvatarImage src={student.avatar} alt={student.name} />
-                  <AvatarFallback className="bg-red-100 text-red-700 text-xl">
+                  <AvatarFallback className="bg-red-100 text-red-700 text-sm sm:text-base">
                     {getInitials(student.name)}
                   </AvatarFallback>
                 </Avatar>
-                <div className="flex-1 text-center sm:text-left mt-2 sm:mt-0">
-                  <h3 className="font-bold text-lg">{student.name}</h3>
-                  <div className="flex flex-wrap justify-center sm:justify-start gap-2 mt-1">
-                    <Badge className="bg-red-500 hover:bg-red-700">{student.score.toFixed(2)} điểm</Badge>
+                <div className="w-full text-center">
+                  <h3 className="font-semibold text-xs sm:text-sm line-clamp-1">{student.name}</h3>
+                  <div className="flex flex-col items-center gap-1 mt-1">
+                    <Badge className="bg-red-600 hover:bg-red-700 text-xs py-0 px-2">
+                      {student.score.toFixed(2)} điểm
+                    </Badge>
                     {student.school && (
-                      <Badge variant="outline" className="border-red-300">
+                      <Badge variant="outline" className="text-xs py-0 px-2 line-clamp-1">
                         {student.school}
                       </Badge>
                     )}
@@ -197,31 +198,31 @@ function HighScoreStudentsByYear({ year }: { year: string }) {
           </VisuallyHidden>
           {selectedStudent && (
             <div className="flex flex-col items-center">
-              <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-6 mb-4 md:mb-6 w-full">
-                <Avatar className="h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32 border-2 md:border-3 border-red-200 shadow-lg">
+              <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 md:gap-6 mb-3 sm:mb-4 md:mb-6 w-full">
+                <Avatar className="h-20 w-20 sm:h-24 sm:w-24 md:h-28 md:w-28 border-2 border-red-200 shadow-md">
                   <AvatarImage src={selectedStudent.avatar} alt={selectedStudent.name} />
-                  <AvatarFallback className="bg-red-100 text-red-700 text-xl md:text-2xl">
+                  <AvatarFallback className="bg-red-100 text-red-700 text-lg sm:text-xl">
                     {getInitials(selectedStudent.name)}
                   </AvatarFallback>
                 </Avatar>
-                <div className="text-center sm:text-left mt-2 sm:mt-0">
-                  <h2 className="text-xl sm:text-2xl font-bold">{selectedStudent.name}</h2>
+                <div className="text-center sm:text-left mt-1 sm:mt-0">
+                  <h2 className="text-lg sm:text-xl font-bold">{selectedStudent.name}</h2>
                   <div className="flex flex-wrap justify-center sm:justify-start gap-1 sm:gap-2 mt-1 sm:mt-2">
-                    <Badge className="bg-red-600 hover:bg-red-700 text-sm sm:text-base md:text-lg py-0 sm:py-1">
+                    <Badge className="bg-red-600 hover:bg-red-700 text-xs sm:text-sm py-0 px-2">
                       {selectedStudent.score.toFixed(2)} điểm
                     </Badge>
                     {selectedStudent.school && (
-                      <Badge variant="outline" className="text-sm sm:text-base md:text-lg py-0 sm:py-1">
+                      <Badge variant="outline" className="text-xs sm:text-sm py-0 px-2">
                         {selectedStudent.school}
                       </Badge>
                     )}
                   </div>
-                  <p className="text-gray-600 mt-2 sm:mt-3 text-sm sm:text-base">
+                  <p className="text-gray-600 mt-1 sm:mt-2 text-xs sm:text-sm">
                     {selectedStudent.description}
                   </p>
                 </div>
               </div>
-              <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh]">
+              <div className="relative w-full h-[40vh] sm:h-[50vh] md:h-[60vh]">
                 <Image
                   src={selectedStudent.scoreImage || "/placeholder.svg"}
                   alt={`Bảng điểm của ${selectedStudent.name}`}
@@ -231,8 +232,8 @@ function HighScoreStudentsByYear({ year }: { year: string }) {
                   priority={false}
                 />
               </div>
-              <p className="mt-2 sm:mt-4 text-center text-xs sm:text-sm text-gray-500">
-                Bảng điểm kỳ thi tốt nghiệp THPT 2024
+              <p className="mt-2 sm:mt-3 text-center text-xs text-gray-500">
+                Bảng điểm kỳ thi tốt nghiệp THPT {year}
               </p>
             </div>
           )}
