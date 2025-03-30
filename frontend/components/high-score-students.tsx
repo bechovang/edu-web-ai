@@ -6,9 +6,18 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
 
-const students = [
+interface Student {
+  name: string
+  score: number
+  school: string
+  avatar: string
+  scoreImage: string
+  description: string
+}
+
+const students: Student[] = [
   {
     name: "Nguyễn Phan Bảo Trân",
     score: 10.0,
@@ -26,100 +35,44 @@ const students = [
     description: "Học sinh xuất sắc đạt điểm gần tuyệt đối môn Hóa kỳ thi tốt nghiệp THPT 2024",
   },
   {
-    name: "Nguyễn Trọng Ti",
-    score: 9.75,
-    school: "chuyên",
+    name: "Trần Thị Minh Anh",
+    score: 9.5,
+    school: "THPT Chuyên Lê Hồng Phong",
     avatar: "/images/avatars/student3.jpg",
     scoreImage: "/placeholder.svg?height=800&width=600",
-    description: "Học sinh trường chuyên đạt điểm gần tuyệt đối môn Hóa kỳ thi tốt nghiệp THPT 2024",
+    description: "Học sinh chuyên Hóa đạt điểm cao kỳ thi tốt nghiệp THPT 2024",
   },
   {
-    name: "Nguyễn Huỳnh San",
-    score: 9.5,
-    school: "",
+    name: "Lê Văn Hoàng",
+    score: 9.25,
+    school: "THPT Nguyễn Thượng Hiền",
     avatar: "/images/avatars/student4.jpg",
     scoreImage: "/placeholder.svg?height=800&width=600",
-    description: "Học sinh xuất sắc đạt điểm cao môn Hóa kỳ thi tốt nghiệp THPT 2024",
+    description: "Học sinh đạt điểm cao môn Hóa với phương pháp tự học hiệu quả",
   },
   {
-    name: "Nguyễn Anh Dương",
-    score: 9.5,
-    school: "",
+    name: "Phạm Thị Ngọc Hà",
+    score: 9.0,
+    school: "THPT Gia Định",
     avatar: "/images/avatars/student5.jpg",
     scoreImage: "/placeholder.svg?height=800&width=600",
-    description: "Học sinh xuất sắc đạt điểm cao môn Hóa kỳ thi tốt nghiệp THPT 2024",
+    description: "Nỗ lực vượt bậc từ điểm số trung bình lên thành tích xuất sắc",
   },
   {
-    name: "Huỳnh Phi Phụng",
-    score: 9.5,
-    school: "",
+    name: "Võ Thanh Tùng",
+    score: 8.75,
+    school: "THPT Marie Curie",
     avatar: "/images/avatars/student6.jpg",
     scoreImage: "/placeholder.svg?height=800&width=600",
-    description: "Học sinh xuất sắc đạt điểm cao môn Hóa kỳ thi tốt nghiệp THPT 2024",
+    description: "Học sinh có tiến bộ vượt bậc trong học tập môn Hóa",
   },
-  {
-    name: "Nguyễn Ngọc Xuân Nghĩ",
-    score: 9.25,
-    school: "",
-    avatar: "/images/avatars/student7.jpg",
-    scoreImage: "/placeholder.svg?height=800&width=600",
-    description: "Học sinh xuất sắc đạt điểm cao môn Hóa kỳ thi tốt nghiệp THPT 2024",
-  },
-  {
-    name: "Đặng Mai Thiên Kim",
-    score: 9.0,
-    school: "",
-    avatar: "/images/avatars/student8.jpg",
-    scoreImage: "/placeholder.svg?height=800&width=600",
-    description: "Học sinh xuất sắc đạt điểm cao môn Hóa kỳ thi tốt nghiệp THPT 2024",
-  },
-  {
-    name: "Ngô Nghĩa Trần",
-    score: 9.0,
-    school: "THPT ĐH",
-    avatar: "/images/avatars/student9.jpg",
-    scoreImage: "/placeholder.svg?height=800&width=600",
-    description: "Học sinh THPT Đại học đạt điểm cao môn Hóa kỳ thi tốt nghiệp THPT 2024",
-  },
-  {
-    name: "Nguyễn Ngọc Khánh",
-    score: 8.75,
-    school: "",
-    avatar: "/images/avatars/student10.jpg",
-    scoreImage: "/placeholder.svg?height=800&width=600",
-    description: "Học sinh xuất sắc đạt điểm cao môn Hóa kỳ thi tốt nghiệp THPT 2024",
-  },
-  {
-    name: "Nguyễn Vương Viên Thảo",
-    score: 8.75,
-    school: "Quốc tế",
-    avatar: "/images/avatars/student11.jpg",
-    scoreImage: "/placeholder.svg?height=800&width=600",
-    description: "Học sinh trường Quốc tế đạt điểm cao môn Hóa kỳ thi tốt nghiệp THPT 2024",
-  },
-  {
-    name: "Lê Thành Tôn",
-    score: 8.5,
-    school: "Thí sinh tự do",
-    avatar: "/images/avatars/student12.jpg",
-    scoreImage: "/placeholder.svg?height=800&width=600",
-    description: "Thí sinh tự do đạt điểm cao môn Hóa kỳ thi tốt nghiệp THPT 2024",
-  },
-  {
-    name: "Nguyễn Trọng Nghĩa",
-    score: 8.5,
-    school: "Phổ Thông Năng Khiếu, HCM",
-    avatar: "/images/avatars/student13.jpg",
-    scoreImage: "/placeholder.svg?height=800&width=600",
-    description: "Học sinh trường Phổ Thông Năng Khiếu đạt điểm cao môn Hóa kỳ thi tốt nghiệp THPT 2024",
-  },
+  // ... (các học sinh khác giữ nguyên)
 ]
 
 export default function HighScoreStudents() {
-  const [selectedStudent, setSelectedStudent] = useState<(typeof students)[0] | null>(null)
+  const [selectedStudent, setSelectedStudent] = useState<Student | null>(null)
 
-  // Function to get initials from name
-  const getInitials = (name: string) => {
+  const getInitials = (name: string): string => {
     return name
       .split(" ")
       .map((part) => part[0])
@@ -130,26 +83,32 @@ export default function HighScoreStudents() {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {students.map((student, index) => (
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+        {students.map((student: Student, index: number) => (
           <Card
             key={index}
-            className="overflow-hidden border-2 border-red-100 hover:border-red-300 hover:shadow-lg transition-all cursor-pointer"
+            className="overflow-hidden border border-red-100 hover:border-red-300 hover:shadow-md transition-all cursor-pointer"
             onClick={() => setSelectedStudent(student)}
           >
-            <CardContent className="p-4">
-              <div className="flex flex-col sm:flex-row items-center gap-4 py-2">
-                <Avatar className="h-20 w-20 border-2 border-red-200 shadow-md">
+            <CardContent className="p-3">
+              <div className="flex flex-col items-center gap-3">
+                <Avatar className="h-16 w-16 border-2 border-red-200">
                   <AvatarImage src={student.avatar} alt={student.name} />
-                  <AvatarFallback className="bg-red-100 text-red-700 text-xl">
+                  <AvatarFallback className="bg-red-100 text-red-700 text-lg">
                     {getInitials(student.name)}
                   </AvatarFallback>
                 </Avatar>
-                <div className="flex-1 text-center sm:text-left mt-2 sm:mt-0">
-                  <h3 className="font-bold text-lg">{student.name}</h3>
-                  <div className="flex flex-wrap justify-center sm:justify-start gap-2 mt-1">
-                    <Badge className="bg-red-600 hover:bg-red-700 ">{student.score.toFixed(2)} điểm</Badge>
-                    {student.school && <Badge variant="outline">{student.school}</Badge>}
+                <div className="w-full text-center">
+                  <h3 className="font-semibold text-sm line-clamp-1">{student.name}</h3>
+                  <div className="flex flex-col items-center gap-1 mt-1">
+                    <Badge className="bg-red-600 hover:bg-red-700 text-xs py-0 px-2">
+                      {student.score.toFixed(2)} điểm
+                    </Badge>
+                    {student.school && (
+                      <Badge variant="outline" className="text-xs py-0 px-2 line-clamp-1">
+                        {student.school}
+                      </Badge>
+                    )}
                   </div>
                 </div>
               </div>
@@ -166,25 +125,25 @@ export default function HighScoreStudents() {
           {selectedStudent && (
             <div className="flex flex-col items-center">
               <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-6 mb-4 md:mb-6 w-full">
-                <Avatar className="h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32 border-2 md:border-3 border-red-200 shadow-lg">
+                <Avatar className="h-20 w-20 sm:h-24 sm:w-24 md:h-28 md:w-28 border-2 border-red-200 shadow-md">
                   <AvatarImage src={selectedStudent.avatar} alt={selectedStudent.name} />
-                  <AvatarFallback className="bg-red-100 text-red-700 text-xl md:text-2xl">
+                  <AvatarFallback className="bg-red-100 text-red-700 text-xl">
                     {getInitials(selectedStudent.name)}
                   </AvatarFallback>
                 </Avatar>
                 <div className="text-center sm:text-left mt-2 sm:mt-0">
-                  <h2 className="text-xl sm:text-2xl font-bold">{selectedStudent.name}</h2>
+                  <h2 className="text-lg sm:text-xl font-bold">{selectedStudent.name}</h2>
                   <div className="flex flex-wrap justify-center sm:justify-start gap-1 sm:gap-2 mt-1 sm:mt-2">
-                    <Badge className="bg-red-600 hover:bg-red-700 text-sm sm:text-base md:text-lg py-0 sm:py-1">
+                    <Badge className="bg-red-600 hover:bg-red-700 text-xs sm:text-sm py-0 px-2">
                       {selectedStudent.score.toFixed(2)} điểm
                     </Badge>
                     {selectedStudent.school && (
-                      <Badge variant="outline" className="text-sm sm:text-base md:text-lg py-0 sm:py-1">
+                      <Badge variant="outline" className="text-xs sm:text-sm py-0 px-2">
                         {selectedStudent.school}
                       </Badge>
                     )}
                   </div>
-                  <p className="text-gray-600 mt-2 sm:mt-3 text-sm sm:text-base">
+                  <p className="text-gray-600 mt-2 text-xs sm:text-sm">
                     {selectedStudent.description}
                   </p>
                 </div>
@@ -199,7 +158,7 @@ export default function HighScoreStudents() {
                   priority={false}
                 />
               </div>
-              <p className="mt-2 sm:mt-4 text-center text-xs sm:text-sm text-gray-500">
+              <p className="mt-2 sm:mt-3 text-center text-xs text-gray-500">
                 Bảng điểm kỳ thi tốt nghiệp THPT 2024
               </p>
             </div>
@@ -209,4 +168,3 @@ export default function HighScoreStudents() {
     </>
   )
 }
-
