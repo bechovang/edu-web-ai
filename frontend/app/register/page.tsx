@@ -334,7 +334,7 @@ export default function RegisterPage() {
 
                 <Button 
                   type="submit" 
-                  className="w-full bg-red-600 hover:bg-red-700 text-sm sm:text-base" 
+                  className="w-full animate-pulse-glow-red bg-red-600 hover:bg-red-700 text-sm sm:text-base" 
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? "Đang xử lý..." : "Đăng ký"}

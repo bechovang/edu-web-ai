@@ -5,6 +5,7 @@ import HighScoreStudents from "@/components/high-score-students"
 import RecentPosts from "@/components/recent-posts"
 import ClassGallery from "@/components/class-gallery"
 import TeacherGallery from "@/components/teacher-gallery"
+import FloatingCallButton from "@/components/FloatingCallButton"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -34,8 +35,10 @@ export default function HomePage() {
                 Trung Tâm dạy học ngoài giờ - chuyên bồi dưỡng văn hoá cho học sinh phổ thông.
               </p>
               <Link href="/register">
-                <Button size="lg" className="bg-amber-500 hover:bg-amber-600 text-white font-bold px-8 py-6 text-lg">
-                  Đăng ký học
+                <Button 
+                  size="lg" 
+                  className="animate-pulse-glow-amber bg-amber-500 hover:bg-amber-600 text-white font-bold px-8 py-6 text-lg transition-all duration-300">
+                  Đăng ký học ngay
                 </Button>
               </Link>
             </div>
@@ -116,7 +119,7 @@ export default function HomePage() {
             <p className="mb-3">Trung Tâm dạy học ngoài giờ - chuyên bồi dưỡng văn hoá cho học sinh phổ thông.</p>
             <p className="mb-6">Liên hệ qua Zalo: <span className="font-medium">0971515451</span> - Đăng ký học tại: <span className="font-medium">www.TrungTamAnhBinhMinh.vn</span></p>
             <Link href="/register">
-              <Button size="lg" className="bg-amber-500 hover:bg-amber-600 text-white font-bold">
+              <Button size="lg" className="animate-pulse-glow-amber bg-amber-500 hover:bg-amber-600">
                 Đăng ký học
               </Button>
             </Link>
@@ -156,6 +159,9 @@ export default function HomePage() {
           <TeacherGallery />
         </div>
       </section>
+
+      {/* Thêm component FloatingCallButton vào cuối */}
+      <FloatingCallButton />
     </main>
   )
 }
