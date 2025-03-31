@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { Facebook, Mail, Phone, MapPin } from "lucide-react"
 import { FaTiktok } from "react-icons/fa"
+import Image from "next/image"
 
 export default function Footer() {
   return (
@@ -62,16 +63,31 @@ export default function Footer() {
             <h3 className="text-xl font-bold mb-4">Kết nối với chúng tôi</h3>
             <div className="flex space-x-4 items-center">
               <Link href="https://www.facebook.com/abmedu" className="hover:text-red-300 transition-colors">
-                <Facebook className="h-6 w-6" />
+                <Facebook className="h-8 w-8" />
               </Link>
               <Link href="https://www.tiktok.com/@abmedu" className="hover:text-red-300 transition-colors">
-                <FaTiktok className="h-6 w-6" />
+                <FaTiktok className="h-8 w-8" />
               </Link>
-              <Link href="https://zalo.me/659811059618688301" className="hover:text-red-300 transition-colors font-medium">
-                Zalo
+              <Link href="https://zalo.me/659811059618688301" className="group">
+                <div className="relative h-8 w-8">
+                  <Image 
+                    src="/zalo-logo-white.svg" 
+                    alt="Zalo" 
+                    width={32}
+                    height={32}
+                    className="absolute h-8 w-8 group-hover:opacity-0 transition-opacity"
+                  />
+                  <Image 
+                    src="/zalo-logo-text-red-300.svg" 
+                    alt="Zalo" 
+                    width={32}
+                    height={32}
+                    className="absolute h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity"
+                  />
+                </div>
               </Link>
               <Link href="tel:0971515451" className="hover:text-red-300 transition-colors">
-                <Phone className="h-6 w-6" />
+                <Phone className="h-8 w-8" />
               </Link>
             </div>
           </div>
