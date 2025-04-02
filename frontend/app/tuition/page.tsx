@@ -100,7 +100,7 @@ export default function TuitionPage() {
         <TabsContent value="online" className="bg-red-50 border border-red-200 rounded-lg p-4">
           <Card>
             <CardHeader className="text-center">
-              <CardTitle className="text-2xl">2. Học online tại website tuhochoa.vn</CardTitle>
+              <CardTitle className="text-2xl">2. Học online qua Google meet</CardTitle>
               <CardDescription>Học online cùng thầy cô qua Google meet</CardDescription>
             </CardHeader>
             <CardContent>
